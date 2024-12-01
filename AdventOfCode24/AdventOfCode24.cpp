@@ -16,8 +16,16 @@ int main()
     std::cout << "---------------------------------------------------------------------------------" << std::endl << std::endl;
 
     delete dayOne;
+
+    std::cout << "----------------------------------- Second Day -----------------------------------" << std::endl;
+    std::cout << "---------------------------------------------------------------------------------" << std::endl << std::endl;
 }
 
+/// <summary>
+/// Reads through the file given and return each line as a vector entry
+/// </summary>
+/// <param name="filePath">Path to txt file to parse</param>
+/// <returns>Return vector of strings containing each line per entry</returns>
 std::vector<std::string> FileParser(std::string filePath)
 {
     std::ifstream currentFile(filePath);

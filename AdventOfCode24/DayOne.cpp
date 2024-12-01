@@ -5,7 +5,8 @@ DayOne::DayOne(std::vector<std::string> parsedFile)
 	TotalDistance = 0;
 	SimulairityScore = 0;
 
-	for (int i = 0; i < parsedFile.size(); i++)
+	//Parsing the file into 2 numbered array depended on the spacing
+	for (size_t i = 0; i < parsedFile.size(); i++)
 	{
 		int startSecondNumber = 0;
 		int count = 0;
@@ -33,12 +34,12 @@ void DayOne::RunAssignment()
 	Sort(FirstNumbers);
 	Sort(SecondNumbers);
 
-	for (int i = 0; i < FirstNumbers.size(); i++)
+	for (size_t i = 0; i < FirstNumbers.size(); i++)
 	{
 		Distance.push_back(FirstNumbers[i] - SecondNumbers[i]);
 	}
 
-	for (int i = 0; i < Distance.size(); i++)
+	for (size_t i = 0; i < Distance.size(); i++)
 	{
 		TotalDistance += abs(Distance[i]);
 	}
@@ -47,7 +48,7 @@ void DayOne::RunAssignment()
 }
 void DayOne::RunBonusAssignment()
 {
-	for (int i = 0; i < SecondNumbers.size(); i++)
+	for (size_t i = 0; i < SecondNumbers.size(); i++)
 	{
 		if (!SecondNumbersSimulairSorted.empty())
 		{
@@ -73,6 +74,9 @@ void DayOne::RunBonusAssignment()
 	std::cout << "Simulairity Score: " << SimulairityScore << std::endl;
 }
 
+/// <summary>
+/// Sorting a int array from small to large
+/// </summary>
 void DayOne::Sort(std::vector<int>& numbersToSort)
 {
 	for (int i = 0; i < (numbersToSort.size() - 1); i++)
