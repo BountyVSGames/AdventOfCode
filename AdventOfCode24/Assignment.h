@@ -6,5 +6,6 @@
 class Assignment
 {
 public:
-	virtual void RunAssignment(std::vector<std::string> parsedFile) {};
+	virtual void RunAssignment() {};
+	virtual void RunBonusAssignment() {};
 };

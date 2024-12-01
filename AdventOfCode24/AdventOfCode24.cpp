@@ -7,9 +7,14 @@ std::vector<std::string> FileParser(std::string filePath);
 
 int main()
 {
-    DayOne* dayOne = new DayOne();
+    DayOne* dayOne = new DayOne(FileParser("Input\\Day1.txt"));
+    
+    std::cout << "----------------------------------- First Day -----------------------------------" << std::endl;
+    dayOne->RunAssignment();
+    dayOne->RunBonusAssignment();
+    std::cout << "---------------------------------------------------------------------------------" << std::endl;
 
-    dayOne->RunAssignment(FileParser("Input\\Day1.txt"));
+    delete dayOne;
 }
 
 std::vector<std::string> FileParser(std::string filePath)

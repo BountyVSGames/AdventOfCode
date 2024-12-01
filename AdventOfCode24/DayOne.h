@@ -3,7 +3,11 @@
 class DayOne : public Assignment
 {
 public:
-    void RunAssignment(std::vector<std::string> parsedFile);
+    DayOne(std::vector<std::string> parsedFile);
+
+    void RunAssignment();
+    void RunBonusAssignment();
+
 private:
     std::vector<int> FirstNumbers;
     std::vector<int> SecondNumbers;

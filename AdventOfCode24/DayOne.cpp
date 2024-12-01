@@ -1,7 +1,9 @@
 #include "DayOne.h"
 
-void DayOne::RunAssignment(std::vector<std::string> parsedFile)
+DayOne::DayOne(std::vector<std::string> parsedFile)
 {
+	Result = 0;
+
 	for (int i = 0; i < parsedFile.size(); i++)
 	{
 		int startSecondNumber = 0;
@@ -23,15 +25,16 @@ void DayOne::RunAssignment(std::vector<std::string> parsedFile)
 
 		SecondNumbers.push_back(std::stoi(parsedFile[i].substr(startSecondNumber, count)));
 	}
+}
 
+void DayOne::RunAssignment()
+{
 	Sort(FirstNumbers);
 	Sort(SecondNumbers);
 
 	for (int i = 0; i < FirstNumbers.size(); i++)
 	{
 		Distance.push_back(FirstNumbers[i] - SecondNumbers[i]);
-
-		std::cout << FirstNumbers[i] << " " << SecondNumbers[i] << " Result: " << abs(Distance[i]) << std::endl;
 	}
 
 	for (int i = 0; i < Distance.size(); i++)
@@ -40,6 +43,10 @@ void DayOne::RunAssignment(std::vector<std::string> parsedFile)
 	}
 
 	std::cout << "Result first assignment: " << Result << std::endl;
+}
+void DayOne::RunBonusAssignment()
+{
+
 }
 
 void DayOne::Sort(std::vector<int>& numbersToSort)
