@@ -1,7 +1,10 @@
 #pragma once
+#include <iostream>
+#include <vector>
+#include <string>
+
 class Assignment
 {
 public:
-	virtual void RunAssingment() {};
+	virtual void RunAssignment(std::vector<std::string> parsedFile) {};
 };
-
