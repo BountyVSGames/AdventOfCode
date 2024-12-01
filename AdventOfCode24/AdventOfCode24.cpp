@@ -11,8 +11,9 @@ int main()
     
     std::cout << "----------------------------------- First Day -----------------------------------" << std::endl;
     dayOne->RunAssignment();
-    dayOne->RunBonusAssignment();
     std::cout << "---------------------------------------------------------------------------------" << std::endl;
+    dayOne->RunBonusAssignment();
+    std::cout << "---------------------------------------------------------------------------------" << std::endl << std::endl;
 
     delete dayOne;
 }

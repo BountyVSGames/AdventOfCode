@@ -1,5 +1,7 @@
 #pragma once
 #include "Assignment.h"
+#include <map>
+
 class DayOne : public Assignment
 {
 public:
@@ -13,7 +15,10 @@ private:
     std::vector<int> SecondNumbers;
     std::vector<int> Distance;
 
-    int Result;
+    std::map<int, int> SecondNumbersSimulairSorted;
+
+    int TotalDistance;
+    int SimulairityScore;
 
     void Sort(std::vector<int>& numbersToSort);
 };

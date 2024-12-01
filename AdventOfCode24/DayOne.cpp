@@ -2,7 +2,8 @@
 
 DayOne::DayOne(std::vector<std::string> parsedFile)
 {
-	Result = 0;
+	TotalDistance = 0;
+	SimulairityScore = 0;
 
 	for (int i = 0; i < parsedFile.size(); i++)
 	{
@@ -39,14 +40,37 @@ void DayOne::RunAssignment()
 
 	for (int i = 0; i < Distance.size(); i++)
 	{
-		Result += abs(Distance[i]);
+		TotalDistance += abs(Distance[i]);
 	}
 
-	std::cout << "Result first assignment: " << Result << std::endl;
+	std::cout << "Result first assignment: " << TotalDistance << std::endl;
 }
 void DayOne::RunBonusAssignment()
 {
+	for (int i = 0; i < SecondNumbers.size(); i++)
+	{
+		if (!SecondNumbersSimulairSorted.empty())
+		{
+			std::map<int, int>::iterator mapIndex = SecondNumbersSimulairSorted.find(SecondNumbers[i]);
+			if (mapIndex != SecondNumbersSimulairSorted.end())
+			{
+				mapIndex->second += 1;
+			}
+		}
 
+		SecondNumbersSimulairSorted.insert(std::pair<int, int>(SecondNumbers[i], 1));
+	}
+
+	for (int i = 0; i < FirstNumbers.size(); i++)
+	{
+		std::map<int, int>::iterator mapIndex = SecondNumbersSimulairSorted.find(FirstNumbers[i]);
+		if (mapIndex != SecondNumbersSimulairSorted.end())
+		{
+			SimulairityScore += FirstNumbers[i] * mapIndex->second;
+		}
+	}
+	
+	std::cout << "Simulairity Score: " << SimulairityScore << std::endl;
 }
 
 void DayOne::Sort(std::vector<int>& numbersToSort)
