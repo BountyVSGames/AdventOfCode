@@ -2,12 +2,14 @@
 //
 #include <fstream>
 #include "DayOne.h"
+#include "DayTwo.h"
 
 std::vector<std::string> FileParser(std::string filePath);
 
 int main()
 {
     DayOne* dayOne = new DayOne(FileParser("Input\\Day1.txt"));
+    DayTwo* dayTwo = new DayTwo(FileParser("Input\\Day2.txt"));
     
     std::cout << "----------------------------------- First Day -----------------------------------" << std::endl;
     dayOne->RunAssignment();
@@ -18,6 +20,9 @@ int main()
     delete dayOne;
 
     std::cout << "----------------------------------- Second Day -----------------------------------" << std::endl;
+    dayTwo->RunAssignment();
+    std::cout << "---------------------------------------------------------------------------------" << std::endl;
+    dayTwo->RunBonusAssignment();
     std::cout << "---------------------------------------------------------------------------------" << std::endl << std::endl;
 }
 

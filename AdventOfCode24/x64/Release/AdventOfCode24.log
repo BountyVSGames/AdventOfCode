@@ -1,7 +1,8 @@
 ﻿  AdventOfCode24.cpp
+  DayTwo.cpp
   Generating code
-  1 of 379 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+  20 of 384 functions ( 5.2%) were compiled, the rest were copied from previous compilation.
+    5 functions were new in current compilation
+    16 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  AdventOfCode24.vcxproj -> C:\Users\boude\Documents\Git\AdventOfCode24\AdventOfCode24\x64\Release\AdventOfCode24.exe
+  AdventOfCode24.vcxproj -> C:\Users\boude\Documents\Git\AdventofCode24\AdventOfCode24\x64\Release\AdventOfCode24.exe

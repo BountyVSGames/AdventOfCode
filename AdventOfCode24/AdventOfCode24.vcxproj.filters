@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Days">
+      <UniqueIdentifier>{0d70f3a7-2c7a-43e2-be60-33a5ae2f3cb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Days">
+      <UniqueIdentifier>{02e568df-af1c-49a4-9217-e08e6c2e156f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdventOfCode24.cpp">
@@ -22,7 +28,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DayOne.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Days</Filter>
+    </ClCompile>
+    <ClCompile Include="DayTwo.cpp">
+      <Filter>Source Files\Days</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -30,7 +39,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DayOne.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Days</Filter>
+    </ClInclude>
+    <ClInclude Include="DayTwo.h">
+      <Filter>Header Files\Days</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
