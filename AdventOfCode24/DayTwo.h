@@ -7,4 +7,8 @@ public:
 
     void RunAssignment();
     void RunBonusAssignment();
+private: 
+    int SaveReports;
+    int UpdatedSaveReports;
+    std::vector<std::string> UnsaveReports;
 };
