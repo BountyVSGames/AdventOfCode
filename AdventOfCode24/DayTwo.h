@@ -1,5 +1,6 @@
 #pragma once
 #include "Assignment.h"
+
 class DayTwo : public Assignment
 {
 public:
