@@ -16,6 +16,7 @@ DayTwo::DayTwo(std::vector<std::string> parsedFile)
 	bool decreasing = false;
 
 	bool unsafe = false;
+	bool doubleUnsafe = false;
 
 	for (size_t i = 0; i < parsedFile.size(); i++)
 	{
@@ -26,6 +27,7 @@ DayTwo::DayTwo(std::vector<std::string> parsedFile)
 		increasing = false;
 		decreasing = false;
 		unsafe = false;
+		doubleUnsafe = false;
 
 		temp = "";
 		found = 0;
@@ -79,7 +81,7 @@ DayTwo::DayTwo(std::vector<std::string> parsedFile)
 		{
 			SaveReports++;
 		}
-		else
+		else if(!doubleUnsafe)
 		{
 			UnsaveReports.push_back(parsedFile[i]);
 		}
@@ -92,5 +94,13 @@ void DayTwo::RunAssignment()
 }
 void DayTwo::RunBonusAssignment()
 {
-	std::cout << "Result is: " << UpdatedSaveReports << " save reports" << std::endl;
+	for (size_t i = 0; i < UnsaveReports.size(); i++)
+	{
+		//std::cout << UnsaveReports[i] << std::endl;
+	}
+
+	UpdatedSaveReports = UnsaveReports.size();
+
+	std::cout << "Result is: " << UpdatedSaveReports << " updated safe reports, of the old " << UnsaveReports.size() << std::endl;
+	std::cout << "New size: " << SaveReports + UpdatedSaveReports << std::endl;
 }
