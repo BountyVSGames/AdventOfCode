@@ -129,12 +129,14 @@
   <ItemGroup>
     <ClCompile Include="AdventOfCode24.cpp" />
     <ClCompile Include="Assignment.cpp" />
+    <ClCompile Include="DayFour.cpp" />
     <ClCompile Include="DayOne.cpp" />
     <ClCompile Include="DayThree.cpp" />
     <ClCompile Include="DayTwo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assignment.h" />
+    <ClInclude Include="DayFour.h" />
     <ClInclude Include="DayOne.h" />
     <ClInclude Include="DayThree.h" />
     <ClInclude Include="DayTwo.h" />
