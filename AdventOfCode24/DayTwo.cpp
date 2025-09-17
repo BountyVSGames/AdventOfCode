@@ -6,31 +6,21 @@ DayTwo::DayTwo(std::vector<std::string> parsedFile)
 	//String Stream used by https://www.geeksforgeeks.org/extract-integers-string-c/
 	SaveReports = 0;
 
-	std::vector<int> result;
-	
-	std::string temp;
-
-	int found = 0;
-
-	bool increasing = false;
-	bool decreasing = false;
-
-	bool unsafe = false;
-	bool doubleUnsafe = false;
-
 	for (size_t i = 0; i < parsedFile.size(); i++)
 	{
 		std::stringstream ss;
 		ss << parsedFile[i];
-		result.clear();
 
-		increasing = false;
-		decreasing = false;
-		unsafe = false;
-		doubleUnsafe = false;
+		std::vector<int> result;
 
-		temp = "";
-		found = 0;
+		bool increasing = false;
+		bool decreasing = false;
+		bool unsafe = false;
+		bool doubleUnsafe = false;
+
+		int found = 0;
+
+		std::string temp = "";
 
 		while (!ss.eof())
 		{
@@ -38,52 +28,80 @@ DayTwo::DayTwo(std::vector<std::string> parsedFile)
 
 			if (std::stringstream(temp) >> found)
 			{
-				result.push_back(found);
-
-				if (result.size() > 2)
+				if (result.size() > 1)
 				{
-					if (decreasing && ((found >= result[result.size() - 2]) || (abs(found - result[result.size() - 2]) > 3)))
+					if (decreasing && ((found >= result[result.size() - 1]) || (abs(found - result[result.size() - 1]) > 3) || (abs(found - result[result.size() - 1]) == 0)))
 					{
-						unsafe = true;
-						break;
+						if (!unsafe)
+						{
+							unsafe = true;
+							continue;
+						}
+						else if (unsafe && !doubleUnsafe)
+						{
+							doubleUnsafe = true;
+						}
 					}
-					else if (increasing && ((found <= result[result.size() - 2]) || (abs(found - result[result.size() - 2]) > 3)))
+					else if (increasing && ((found <= result[result.size() - 1]) || (abs(found - result[result.size() - 1]) > 3) || (abs(found - result[result.size() - 1]) == 0)))
 					{
-						unsafe = true;
-						break;
+						if (!unsafe)
+						{
+							unsafe = true;
+							continue;
+						}
+						else if(unsafe && !doubleUnsafe)
+						{
+							doubleUnsafe = true;
+							break;
+						}
 					}
 				}
-				else if (result.size() == 2)
+				else if (result.size() == 1)
 				{
-					if ((found < result[result.size() - 2]) && (abs(found - result[result.size() - 2]) <= 3))
+					if ((found < result[result.size() - 1]) && (abs(found - result[result.size() - 1]) <= 3))
 					{
 						decreasing = true;
 					}
-					else if ((found > result[result.size() - 2]) && (abs(found - result[result.size() - 2]) <= 3))
+					else if ((found > result[result.size() - 1]) && (abs(found - result[result.size() - 1]) <= 3))
 					{
 						increasing = true;
 					}
-					else
+					else if (!unsafe)
 					{
 						unsafe = true;
+						continue;
+					}
+					else if (unsafe)
+					{
+						doubleUnsafe = true;
+						std::cout << "UNSAFE" << std::endl;
 						break;
 					}
-				}	
+				}
+
+				result.push_back(found);
 			}
 
 			temp = "";
 			found = 0;
 		}
 
-		result.clear();
-
 		if (!unsafe)
 		{
 			SaveReports++;
 		}
-		else if(!doubleUnsafe)
+		else if(unsafe && !doubleUnsafe)
 		{
-			UnsaveReports.push_back(parsedFile[i]);
+			OneErrorReports++;
+		}
+		else if (unsafe && doubleUnsafe)
+		{
+			for (size_t i = 0; i < result.size(); i++)
+			{
+				std::cout << result[i] << " ";
+			}
+
+			std::cout << std::endl << parsedFile[i] << std::endl;
 		}
 	}
 }
@@ -94,13 +112,6 @@ void DayTwo::RunAssignment()
 }
 void DayTwo::RunBonusAssignment()
 {
-	for (size_t i = 0; i < UnsaveReports.size(); i++)
-	{
-		//std::cout << UnsaveReports[i] << std::endl;
-	}
-
-	UpdatedSaveReports = UnsaveReports.size();
-
-	std::cout << "Result is: " << UpdatedSaveReports << " updated safe reports, of the old " << UnsaveReports.size() << std::endl;
-	std::cout << "New size: " << SaveReports + UpdatedSaveReports << std::endl;
+	std::cout << "Result is: " << OneErrorReports << " updated safe reports." << std::endl;
+	std::cout << "New size: " << SaveReports + OneErrorReports << std::endl;
 }

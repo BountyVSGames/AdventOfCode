@@ -10,6 +10,7 @@ public:
     void RunBonusAssignment();
 private: 
     int SaveReports;
-    int UpdatedSaveReports;
-    std::vector<std::string> UnsaveReports;
+    int OneErrorReports;
+    std::vector<std::vector<int>> Reports;
+    //std::vector<std::string> UnsaveReports;
 };
