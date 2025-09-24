@@ -28,7 +28,7 @@ void DayThree::RunAssignment()
 		for (size_t j = 0; j < positions.size(); j++)
 		{
 			//std::cout << positions[j] << " . " << finalPos << " " << (finalPos - positions[j]) << std::endl;
-			//std::cout << positions << std::endl;
+			//std::cout << ParsedFile[i][positions[j]] << std::endl;
 			//std::cout << "po" << std::endl;
 
 			finalPos = 0;
@@ -37,13 +37,17 @@ void DayThree::RunAssignment()
 
 			for (size_t k = 0; k < 8; k++) 
 			{
+				//std::cout << ParsedFile[i][positions[j] + k];
+
 				if ((ParsedFile[i][positions[j] + k] >= '0' && ParsedFile[i][positions[j] + k] <= '9'))
 				{
 					tempString += ParsedFile[i][positions[j] + k];
+					//std::cout << ParsedFile[i][positions[j] + k];
 				}
 				else if (ParsedFile[i][positions[j] + k] == ',')
 				{
 					tempString += " ";
+					//std::cout << ParsedFile[i][positions[j] + k];
 				}
 
 				if ((ParsedFile[i][positions[j] + k] == ')') && finalPos == 0)
@@ -61,11 +65,11 @@ void DayThree::RunAssignment()
 
 			if (invalid || finalPos == 0)
 			{
-				std::cout << "TEST" << std::endl;
+				//std::cout << "TEST" << std::endl;
 				break;
 			}
 
-			std::cout << tempString << std::endl;
+			//std::cout << tempString << std::endl;
 			//std::cout << positions[j] << " . " << finalPos << " " << (finalPos - positions[j]) << std::endl;
 			//std::cout << ParsedFile[i].substr(positions[j], finalPos - positions[j]) << std::endl;
 
@@ -101,14 +105,13 @@ void DayThree::RunAssignment()
 			if (firstNumber != -1 && secondNumber != -1)
 			{
 				//std::cout << firstNumber << " . " << secondNumber << std::endl << std::endl;
-
 				//std::cout << tempString << " . " << firstNumber << " . " << secondNumber << std::endl;
 				result += (firstNumber * secondNumber);
 			}
 		}
 	}
 
-	std::cout << "Result of assignment is: " << result << std::endl;
+	//std::cout << "Result of assignment is: " << result << std::endl;
 }
 void DayThree::RunBonusAssignment()
 {

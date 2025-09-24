@@ -16,7 +16,6 @@ DayTwo::DayTwo(std::vector<std::string> parsedFile)
 		bool increasing = false;
 		bool decreasing = false;
 		bool unsafe = false;
-		bool doubleUnsafe = false;
 
 		int found = 0;
 
@@ -28,81 +27,20 @@ DayTwo::DayTwo(std::vector<std::string> parsedFile)
 
 			if (std::stringstream(temp) >> found)
 			{
-				if (result.size() > 1)
-				{
-					if (decreasing && ((found >= result[result.size() - 1]) || (abs(found - result[result.size() - 1]) > 3) || (abs(found - result[result.size() - 1]) == 0)))
-					{
-						if (!unsafe)
-						{
-							unsafe = true;
-							continue;
-						}
-						else if (unsafe && !doubleUnsafe)
-						{
-							doubleUnsafe = true;
-						}
-					}
-					else if (increasing && ((found <= result[result.size() - 1]) || (abs(found - result[result.size() - 1]) > 3) || (abs(found - result[result.size() - 1]) == 0)))
-					{
-						if (!unsafe)
-						{
-							unsafe = true;
-							continue;
-						}
-						else if(unsafe && !doubleUnsafe)
-						{
-							doubleUnsafe = true;
-							break;
-						}
-					}
-				}
-				else if (result.size() == 1)
-				{
-					if ((found < result[result.size() - 1]) && (abs(found - result[result.size() - 1]) <= 3))
-					{
-						decreasing = true;
-					}
-					else if ((found > result[result.size() - 1]) && (abs(found - result[result.size() - 1]) <= 3))
-					{
-						increasing = true;
-					}
-					else if (!unsafe)
-					{
-						unsafe = true;
-						continue;
-					}
-					else if (unsafe)
-					{
-						doubleUnsafe = true;
-						std::cout << "UNSAFE" << std::endl;
-						break;
-					}
-				}
-
-				result.push_back(found);
+				result.push_back(found);	
 			}
 
 			temp = "";
 			found = 0;
 		}
 
-		if (!unsafe)
+		if (!RunRuleSet(result))
 		{
-			SaveReports++;
+			Reports.push_back(result);
+			continue;
 		}
-		else if(unsafe && !doubleUnsafe)
-		{
-			OneErrorReports++;
-		}
-		else if (unsafe && doubleUnsafe)
-		{
-			for (size_t i = 0; i < result.size(); i++)
-			{
-				std::cout << result[i] << " ";
-			}
 
-			std::cout << std::endl << parsedFile[i] << std::endl;
-		}
+		SaveReports++;
 	}
 }
 
@@ -112,6 +50,79 @@ void DayTwo::RunAssignment()
 }
 void DayTwo::RunBonusAssignment()
 {
-	std::cout << "Result is: " << OneErrorReports << " updated safe reports." << std::endl;
-	std::cout << "New size: " << SaveReports + OneErrorReports << std::endl;
+	for (size_t i = Reports.size(); i > 0; i--)
+	{
+		if (!ContainsSingleBadLevel(0, Reports[i - 1]))
+		{
+			Reports.erase(Reports.begin() + (i - 1));
+		}
+	}
+
+	std::cout << "Result is: " << Reports.size() << " updated safe reports." << std::endl;
+	std::cout << "New size: " << SaveReports + Reports.size() << std::endl;
+}
+
+bool DayTwo::RunRuleSet(std::vector<int> report)
+{
+	bool decreasing = false;
+	bool increasing = false;
+
+	for (int i = 0; i < report.size() - 1; i++)
+	{
+		if (i > 1)
+		{
+			if (decreasing && (report[i] >= report[i - 1]))
+			{
+				return false;
+			}
+			else if (increasing && (report[i] <= report[i - 1]))
+			{
+				return false;
+			}
+
+			if ((abs(report[i - 1] - report[i]) > 3) || (abs(report[i - 1] - report[i]) == 0))
+			{
+				return false;
+			}
+		}
+		else if (i == 1)
+		{
+			if (abs(report[i - 1] - report[i] > 3) || abs(report[i - 1] - report[i] == 0))
+			{
+				return false;
+			}
+
+			if (report[i + 1] < report[i])
+			{
+				decreasing = true;
+			}
+			else if (report[i + 1] > report[i])
+			{
+				increasing = true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else if(abs(report[i + 1] - report[i]) > 3 || abs(report[i + 1] - report[i]) == 0)
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
+bool DayTwo::ContainsSingleBadLevel(int iterator, std::vector<int> report)
+{
+	std::vector<int> tempReport = report;
+	report.erase(report.begin() + iterator);
+
+	if (!RunRuleSet(tempReport) && iterator < report.size())
+	{
+		return ContainsSingleBadLevel(iterator++, report);
+	}
+
+	return true;
 }

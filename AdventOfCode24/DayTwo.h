@@ -8,9 +8,10 @@ public:
 
     void RunAssignment();
     void RunBonusAssignment();
-private: 
+private:
+    bool RunRuleSet(std::vector<int> report);
+    bool ContainsSingleBadLevel(int iterator, std::vector<int> report);
+
     int SaveReports;
-    int OneErrorReports;
     std::vector<std::vector<int>> Reports;
-    //std::vector<std::string> UnsaveReports;
 };
