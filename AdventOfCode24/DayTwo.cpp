@@ -59,7 +59,7 @@ void DayTwo::RunBonusAssignment()
 	}
 
 	std::cout << "Result is: " << Reports.size() << " updated safe reports." << std::endl;
-	std::cout << "New size: " << SaveReports + Reports.size() << std::endl;
+	std::cout << "Updated safe reports: " << SaveReports + Reports.size() << std::endl;
 }
 
 bool DayTwo::RunRuleSet(std::vector<int> report)
@@ -67,7 +67,7 @@ bool DayTwo::RunRuleSet(std::vector<int> report)
 	bool decreasing = false;
 	bool increasing = false;
 
-	for (int i = 0; i < report.size() - 1; i++)
+	for (int i = 0; i < report.size(); i++)
 	{
 		if (i > 1)
 		{
@@ -92,11 +92,11 @@ bool DayTwo::RunRuleSet(std::vector<int> report)
 				return false;
 			}
 
-			if (report[i + 1] < report[i])
+			if (report[i] < report[i - 1])
 			{
 				decreasing = true;
 			}
-			else if (report[i + 1] > report[i])
+			else if (report[i] > report[i - 1])
 			{
 				increasing = true;
 			}
@@ -113,15 +113,19 @@ bool DayTwo::RunRuleSet(std::vector<int> report)
 
 	return true;
 }
-
 bool DayTwo::ContainsSingleBadLevel(int iterator, std::vector<int> report)
 {
-	std::vector<int> tempReport = report;
-	report.erase(report.begin() + iterator);
-
-	if (!RunRuleSet(tempReport) && iterator < report.size())
+	if (iterator >= report.size())
 	{
-		return ContainsSingleBadLevel(iterator++, report);
+		return false;
+	}
+
+	std::vector<int> tempReport = report;
+	tempReport.erase(tempReport.begin() + iterator);
+
+	if (!RunRuleSet(tempReport))
+	{
+		return ContainsSingleBadLevel(iterator + 1, report);
 	}
 
 	return true;
