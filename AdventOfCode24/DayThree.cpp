@@ -1,4 +1,5 @@
 #include "DayThree.h"
+#include <map>
 #include <sstream>
 
 DayThree::DayThree(std::vector<std::string> parsedFile) : ParsedFile(parsedFile)
@@ -8,72 +9,51 @@ DayThree::DayThree(std::vector<std::string> parsedFile) : ParsedFile(parsedFile)
 
 void DayThree::RunAssignment()
 {
-	std::string sub = "mul(";
-	std::string tempString;
-	std::vector<size_t> positions;
+	std::string startSub = "mul(";
+	std::string endSub = ")";
+	
 	size_t pos = 0;
-	size_t finalPos = 0;
+	size_t offset = 4;
 
 	for (size_t i = 0; i < ParsedFile.size(); i++)
 	{
-		positions = std::vector<size_t>();
-		pos = ParsedFile[i].find(sub,0);
+		std::map<size_t, size_t> mapPos;
+		pos = ParsedFile[i].find(startSub,0);
 
 		while (pos != std::string::npos)
 		{
-			positions.push_back(pos + 4);
-			pos = ParsedFile[i].find(sub, pos + 1);
+			mapPos.insert({ pos + offset, ParsedFile[i].find(endSub, pos) });
+			pos = ParsedFile[i].find(startSub, pos + 1);
 		}
 
-		for (size_t j = 0; j < positions.size(); j++)
+		std::map<size_t, size_t>::iterator it;
+		for(it = mapPos.begin(); it != mapPos.end();)
 		{
-			//std::cout << positions[j] << " . " << finalPos << " " << (finalPos - positions[j]) << std::endl;
-			//std::cout << ParsedFile[i][positions[j]] << std::endl;
-			//std::cout << "po" << std::endl;
-
-			finalPos = 0;
-			tempString = "";
 			bool invalid = false;
+			std::string tempString = "";
 
-			for (size_t k = 0; k < 8; k++) 
+			for (int j = it->first; j < it->second; j++)
 			{
-				//std::cout << ParsedFile[i][positions[j] + k];
-
-				if ((ParsedFile[i][positions[j] + k] >= '0' && ParsedFile[i][positions[j] + k] <= '9'))
+				if (ParsedFile[i][j] == ',')
 				{
-					tempString += ParsedFile[i][positions[j] + k];
-					//std::cout << ParsedFile[i][positions[j] + k];
+					tempString += ' ';
 				}
-				else if (ParsedFile[i][positions[j] + k] == ',')
+				else if (ParsedFile[i][j] >= '0' && ParsedFile[i][j] <= '9')
 				{
-					tempString += " ";
-					//std::cout << ParsedFile[i][positions[j] + k];
+					tempString += ParsedFile[i][j];
 				}
-
-				if ((ParsedFile[i][positions[j] + k] == ')') && finalPos == 0)
+				else
 				{
-					finalPos = positions[j] + k;
-				}
-				else if ((ParsedFile[i][positions[j] + k] == ')'))
-				{
-					positions.erase(positions.begin() + j);
-					j--;
 					invalid = true;
 					break;
-				}	
+				}		
 			}
 
-			if (invalid || finalPos == 0)
-			{
-				//std::cout << "TEST" << std::endl;
-				break;
+			if (invalid)
+			{		
+				it = mapPos.erase(it);
+				continue;
 			}
-
-			//std::cout << tempString << std::endl;
-			//std::cout << positions[j] << " . " << finalPos << " " << (finalPos - positions[j]) << std::endl;
-			//std::cout << ParsedFile[i].substr(positions[j], finalPos - positions[j]) << std::endl;
-
-			tempString += ParsedFile[i][finalPos];
 
 			int firstNumber = -1;
 			int secondNumber = -1;
@@ -100,18 +80,16 @@ void DayThree::RunAssignment()
 				}
 			}
 
-			temp = "";
-
 			if (firstNumber != -1 && secondNumber != -1)
 			{
-				//std::cout << firstNumber << " . " << secondNumber << std::endl << std::endl;
-				//std::cout << tempString << " . " << firstNumber << " . " << secondNumber << std::endl;
 				result += (firstNumber * secondNumber);
 			}
+
+			++it;
 		}
 	}
 
-	//std::cout << "Result of assignment is: " << result << std::endl;
+	std::cout << "Result of assignment is: " << result << std::endl;
 }
 void DayThree::RunBonusAssignment()
 {
