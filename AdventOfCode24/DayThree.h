@@ -18,4 +18,5 @@ private:
 	std::string Input;
 
 	std::map<size_t, size_t> MulIntructions;
+	std::map<size_t, size_t> ConditionalInstructions;
 };

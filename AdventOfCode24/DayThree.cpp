@@ -25,7 +25,14 @@ DayThree::DayThree(std::vector<std::string> parsedFile) : ParsedFile(parsedFile)
 		pos = Input.find(startInstruction, pos + 1);
 	}
 
+	//Search for dont and do instructions
 	pos = Input.find(dontInstruction);
+
+	while (pos != std::string::npos)
+	{
+		ConditionalInstructions.insert({ pos, Input.find(doInstruction, pos) });
+		pos = Input.find(dontInstruction, pos + 1);
+	}
 }
 
 void DayThree::RunAssignment()
@@ -41,7 +48,29 @@ void DayThree::RunBonusAssignment()
 
 void DayThree::RunConditionalChecks()
 {
+	std::map<size_t, size_t>::iterator conMapIt;
+	std::map<size_t, size_t>::iterator mulMapIt;
 
+	for (conMapIt = ConditionalInstructions.begin(); conMapIt != ConditionalInstructions.end();)
+	{
+		for (mulMapIt = MulIntructions.begin(); mulMapIt != MulIntructions.end();)
+		{
+			if (mulMapIt->first > conMapIt->second)
+			{
+				break;
+			}
+
+			if (mulMapIt->first > conMapIt->first && mulMapIt->first < conMapIt->second)
+			{
+				mulMapIt = MulIntructions.erase(mulMapIt);
+				continue;
+			}
+
+			++mulMapIt;
+		}
+		
+		++conMapIt;
+	}
 }
 
 int DayThree::CalculateResult()
