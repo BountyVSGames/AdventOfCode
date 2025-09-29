@@ -1,4 +1,5 @@
 #pragma once
+#include <map>
 #include "Assignment.h"
 
 class DayThree : public Assignment
@@ -10,6 +11,11 @@ public:
 	void RunBonusAssignment();
 
 private:
+	void RunConditionalChecks();
+	int CalculateResult();
+
 	std::vector<std::string> ParsedFile;
-	int result;
+	std::string Input;
+
+	std::map<size_t, size_t> MulIntructions;
 };
