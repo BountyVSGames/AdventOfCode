@@ -9,5 +9,7 @@ public:
 	void RunBonusAssignment();
 private:
 	std::vector<std::string> ParsedFile;
+	std::vector<std::pair<int, int>> XCoordinates;
+	std::vector<std::pair<int, int>> ACoordinates;
 };
 
