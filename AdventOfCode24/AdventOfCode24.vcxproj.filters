@@ -24,9 +24,6 @@
     <ClCompile Include="AdventOfCode24.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Assignment.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="DayOne.cpp">
       <Filter>Source Files\Days</Filter>
     </ClCompile>

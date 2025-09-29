@@ -10,42 +10,42 @@ std::vector<std::string> FileParser(std::string filePath);
 
 int main()
 {
-    DayOne* dayOne = new DayOne(FileParser("Input\\Day1.txt"));
-    DayTwo* dayTwo = new DayTwo(FileParser("Input\\Day2.txt"));
-    DayThree* dayThree = new DayThree(FileParser("Input\\Day3.txt"));
-    //DayFour* dayFour = new DayFour(FileParser("Input\\Day4.txt"));
+    //DayOne* dayOne = new DayOne(FileParser("Input\\Day1.txt"));
+    //DayTwo* dayTwo = new DayTwo(FileParser("Input\\Day2.txt"));
+    //DayThree* dayThree = new DayThree(FileParser("Input\\Day3.txt"));
+    DayFour* dayFour = new DayFour(FileParser("Input\\Day4.txt"));
     
-    std::cout << "----------------------------------- First Day -----------------------------------" << std::endl;
-    dayOne->RunAssignment();
-    std::cout << "---------------------------------------------------------------------------------" << std::endl;
-    dayOne->RunBonusAssignment();
-    std::cout << "---------------------------------------------------------------------------------" << std::endl << std::endl;
-
-    delete dayOne;
-
-    std::cout << "----------------------------------- Second Day -----------------------------------" << std::endl;
-    dayTwo->RunAssignment();
-    std::cout << "---------------------------------------------------------------------------------" << std::endl;
-    dayTwo->RunBonusAssignment();
-    std::cout << "---------------------------------------------------------------------------------" << std::endl << std::endl;
-
-    delete dayTwo;
-
-    std::cout << "----------------------------------- Third Day -----------------------------------" << std::endl;
-    dayThree->RunAssignment();
-    std::cout << "---------------------------------------------------------------------------------" << std::endl;
-    dayThree->RunBonusAssignment();
-    std::cout << "---------------------------------------------------------------------------------" << std::endl << std::endl;
-
-    delete dayThree;
-
-    //std::cout << "----------------------------------- Fourth Day -----------------------------------" << std::endl;
-    //dayFour->RunAssignment();
+    //std::cout << "----------------------------------- First Day -----------------------------------" << std::endl;
+    //dayOne->RunAssignment();
     //std::cout << "---------------------------------------------------------------------------------" << std::endl;
-    //dayFour->RunBonusAssignment();
+    //dayOne->RunBonusAssignment();
     //std::cout << "---------------------------------------------------------------------------------" << std::endl << std::endl;
 
-    //delete dayFour;
+    //delete dayOne;
+
+    //std::cout << "----------------------------------- Second Day -----------------------------------" << std::endl;
+    //dayTwo->RunAssignment();
+    //std::cout << "---------------------------------------------------------------------------------" << std::endl;
+    //dayTwo->RunBonusAssignment();
+    //std::cout << "---------------------------------------------------------------------------------" << std::endl << std::endl;
+
+    //delete dayTwo;
+
+    //std::cout << "----------------------------------- Third Day -----------------------------------" << std::endl;
+    //dayThree->RunAssignment();
+    //std::cout << "---------------------------------------------------------------------------------" << std::endl;
+    //dayThree->RunBonusAssignment();
+    //std::cout << "---------------------------------------------------------------------------------" << std::endl << std::endl;
+
+    //delete dayThree;
+
+    std::cout << "----------------------------------- Fourth Day -----------------------------------" << std::endl;
+    dayFour->RunAssignment();
+    std::cout << "---------------------------------------------------------------------------------" << std::endl;
+    dayFour->RunBonusAssignment();
+    std::cout << "---------------------------------------------------------------------------------" << std::endl << std::endl;
+
+    delete dayFour;
 }
 
 /// <summary>
