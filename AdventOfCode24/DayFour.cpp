@@ -3,7 +3,10 @@
 DayFour::DayFour(std::vector<std::string> parsedFile)
 {
 	ParsedFile = parsedFile;
+}
 
+void DayFour::Initialize()
+{
 	for (int y = 0; y < ParsedFile.size(); y++)
 	{
 		for (int x = 0; x < ParsedFile[y].size(); x++)
@@ -19,6 +22,7 @@ DayFour::DayFour(std::vector<std::string> parsedFile)
 		}
 	}
 }
+
 void DayFour::RunAssignment()
 {
 	std::string wordToFind = "XMAS";

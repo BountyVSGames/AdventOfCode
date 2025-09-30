@@ -7,10 +7,15 @@ class DayOne : public Assignment
 public:
     DayOne(std::vector<std::string> parsedFile);
 
+    std::string GetAssignmentName() { return "Day One"; };
+
+    void Initialize();
     void RunAssignment();
     void RunBonusAssignment();
 
 private:
+    std::vector<std::string> ParsedFile;
+
     std::vector<int> FirstNumbers;
     std::vector<int> SecondNumbers;
     std::vector<int> Distance;

@@ -7,7 +7,10 @@ DayThree::DayThree(std::vector<std::string> parsedFile) : ParsedFile(parsedFile)
 	{
 		Input += ParsedFile[i];
 	}
+}
 
+void DayThree::Initialize()
+{
 	std::string startInstruction = "mul(";
 	std::string endInstruction = ")";
 	std::string doInstruction = "do()";

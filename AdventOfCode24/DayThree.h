@@ -7,6 +7,9 @@ class DayThree : public Assignment
 public:
 	DayThree(std::vector<std::string> parsedFile);
 
+	std::string GetAssignmentName() { return "Day Three"; };
+
+	void Initialize();
 	void RunAssignment();
 	void RunBonusAssignment();
 

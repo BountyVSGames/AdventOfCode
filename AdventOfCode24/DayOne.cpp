@@ -1,21 +1,24 @@
 #include "DayOne.h"
 
-DayOne::DayOne(std::vector<std::string> parsedFile)
+DayOne::DayOne(std::vector<std::string> parsedFile) : ParsedFile(parsedFile)
 {
 	TotalDistance = 0;
 	SimulairityScore = 0;
+}
 
+void DayOne::Initialize()
+{
 	//Parsing the file into 2 numbered array depended on the spacing
-	for (size_t i = 0; i < parsedFile.size(); i++)
+	for (size_t i = 0; i < ParsedFile.size(); i++)
 	{
 		int startSecondNumber = 0;
 		int count = 0;
 
-		for (char ch : parsedFile[i])
+		for (char ch : ParsedFile[i])
 		{
 			if (ch == ' ' && FirstNumbers.size() != (i + 1))
 			{
-				FirstNumbers.push_back(std::stoi(parsedFile[i].substr(0, count)));
+				FirstNumbers.push_back(std::stoi(ParsedFile[i].substr(0, count)));
 			}
 			else if (FirstNumbers.size() == (i + 1) && ch != ' ' && startSecondNumber == 0)
 			{
@@ -25,7 +28,7 @@ DayOne::DayOne(std::vector<std::string> parsedFile)
 			count++;
 		}
 
-		SecondNumbers.push_back(std::stoi(parsedFile[i].substr(startSecondNumber, count)));
+		SecondNumbers.push_back(std::stoi(ParsedFile[i].substr(startSecondNumber, count)));
 	}
 }
 

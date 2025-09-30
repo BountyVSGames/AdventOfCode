@@ -1,51 +1,51 @@
 // AdventOfCode24.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 #include <fstream>
+#include <chrono>
 #include "DayOne.h"
 #include "DayTwo.h"
 #include "DayThree.h"
 #include "DayFour.h"
 
+using namespace std::chrono;
+
 std::vector<std::string> FileParser(std::string filePath);
+std::vector<Assignment*> AllAssignments;
 
 int main()
 {
-    //DayOne* dayOne = new DayOne(FileParser("Input\\Day1.txt"));
-    //DayTwo* dayTwo = new DayTwo(FileParser("Input\\Day2.txt"));
-    //DayThree* dayThree = new DayThree(FileParser("Input\\Day3.txt"));
-    DayFour* dayFour = new DayFour(FileParser("Input\\Day4.txt"));
+    AllAssignments.push_back(new DayOne(FileParser("Input\\Day1.txt")));
+    AllAssignments.push_back(new DayTwo(FileParser("Input\\Day2.txt")));
+    AllAssignments.push_back(new DayThree(FileParser("Input\\Day3.txt")));
+    AllAssignments.push_back(new DayFour(FileParser("Input\\Day4.txt")));
+
+    steady_clock::time_point start;
+    steady_clock::time_point finish;
+
+    long long duration = 0;
+
+    for (size_t i = 0; i < AllAssignments.size(); i++)
+    {
+        start = high_resolution_clock::now();
+
+        std::cout << "------------------------------------ " << AllAssignments[i]->GetAssignmentName() << " ------------------------------------" << std::endl;
+        AllAssignments[i]->Initialize();
+        AllAssignments[i]->RunAssignment();
+        std::cout << "---------------------------------------------------------------------------------" << std::endl;
+        AllAssignments[i]->RunBonusAssignment();
+        std::cout << "---------------------------------------------------------------------------------" << std::endl;
     
-    //std::cout << "----------------------------------- First Day -----------------------------------" << std::endl;
-    //dayOne->RunAssignment();
-    //std::cout << "---------------------------------------------------------------------------------" << std::endl;
-    //dayOne->RunBonusAssignment();
-    //std::cout << "---------------------------------------------------------------------------------" << std::endl << std::endl;
+        finish = high_resolution_clock::now();
+        duration = duration_cast<milliseconds>(finish - start).count();
 
-    //delete dayOne;
+        std::cout << "This assignment took " << duration << " miliseconds" << std::endl;
+        std::cout << "---------------------------------------------------------------------------------" << std::endl << std::endl;
+    }
 
-    //std::cout << "----------------------------------- Second Day -----------------------------------" << std::endl;
-    //dayTwo->RunAssignment();
-    //std::cout << "---------------------------------------------------------------------------------" << std::endl;
-    //dayTwo->RunBonusAssignment();
-    //std::cout << "---------------------------------------------------------------------------------" << std::endl << std::endl;
-
-    //delete dayTwo;
-
-    //std::cout << "----------------------------------- Third Day -----------------------------------" << std::endl;
-    //dayThree->RunAssignment();
-    //std::cout << "---------------------------------------------------------------------------------" << std::endl;
-    //dayThree->RunBonusAssignment();
-    //std::cout << "---------------------------------------------------------------------------------" << std::endl << std::endl;
-
-    //delete dayThree;
-
-    std::cout << "----------------------------------- Fourth Day -----------------------------------" << std::endl;
-    dayFour->RunAssignment();
-    std::cout << "---------------------------------------------------------------------------------" << std::endl;
-    dayFour->RunBonusAssignment();
-    std::cout << "---------------------------------------------------------------------------------" << std::endl << std::endl;
-
-    delete dayFour;
+    for (size_t i = AllAssignments.size(); i-- > 0;)
+    {
+        delete AllAssignments[i];
+    }
 }
 
 /// <summary>

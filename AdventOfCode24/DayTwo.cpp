@@ -1,15 +1,19 @@
 #include "DayTwo.h"
 #include <sstream>
 
-DayTwo::DayTwo(std::vector<std::string> parsedFile)
+DayTwo::DayTwo(std::vector<std::string> parsedFile) : ParsedFile(parsedFile)
 {
-	//String Stream used by https://www.geeksforgeeks.org/extract-integers-string-c/
 	SaveReports = 0;
 
-	for (size_t i = 0; i < parsedFile.size(); i++)
+}
+
+void DayTwo::Initialize()
+{
+	//String Stream used by https://www.geeksforgeeks.org/extract-integers-string-c/
+	for (size_t i = 0; i < ParsedFile.size(); i++)
 	{
 		std::stringstream ss;
-		ss << parsedFile[i];
+		ss << ParsedFile[i];
 
 		std::vector<int> result;
 
@@ -27,7 +31,7 @@ DayTwo::DayTwo(std::vector<std::string> parsedFile)
 
 			if (std::stringstream(temp) >> found)
 			{
-				result.push_back(found);	
+				result.push_back(found);
 			}
 
 			temp = "";
