@@ -8,5 +8,5 @@ https://adventofcode.com/2024/
 
 # Current Star Count:
 
-8
+10
 

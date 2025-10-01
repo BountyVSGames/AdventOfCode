@@ -6,6 +6,7 @@
 #include "DayTwo.h"
 #include "DayThree.h"
 #include "DayFour.h"
+#include "DayFive.h"
 
 using namespace std::chrono;
 
@@ -14,10 +15,11 @@ std::vector<Assignment*> AllAssignments;
 
 int main()
 {
-    AllAssignments.push_back(new DayOne(FileParser("Input\\Day1.txt")));
-    AllAssignments.push_back(new DayTwo(FileParser("Input\\Day2.txt")));
-    AllAssignments.push_back(new DayThree(FileParser("Input\\Day3.txt")));
-    AllAssignments.push_back(new DayFour(FileParser("Input\\Day4.txt")));
+    //AllAssignments.push_back(new DayOne(FileParser("Input\\Day1.txt")));
+    //AllAssignments.push_back(new DayTwo(FileParser("Input\\Day2.txt")));
+    //AllAssignments.push_back(new DayThree(FileParser("Input\\Day3.txt")));
+    //AllAssignments.push_back(new DayFour(FileParser("Input\\Day4.txt")));
+    AllAssignments.push_back(new DayFive(FileParser("Input\\Day5.txt")));
 
     steady_clock::time_point start;
     steady_clock::time_point finish;
