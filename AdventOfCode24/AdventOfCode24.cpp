@@ -2,13 +2,13 @@
 //
 #include <fstream>
 #include <chrono>
-#include "DayOne.h"
-#include "DayTwo.h"
-#include "DayThree.h"
-#include "DayFour.h"
-#include "DayFive.h"
-#include "DaySix.h"
-#include "DaySeven.h"
+#include "Days/DayOne.h"
+#include "Days/DayTwo.h"
+#include "Days/DayThree.h"
+#include "Days/DayFour.h"
+#include "Days/DayFive.h"
+#include "Days/DaySix.h"
+#include "Days/DaySeven.h"
 
 using namespace std::chrono;
 
