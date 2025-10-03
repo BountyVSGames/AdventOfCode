@@ -8,6 +8,7 @@
 #include "DayFour.h"
 #include "DayFive.h"
 #include "DaySix.h"
+#include "DaySeven.h"
 
 using namespace std::chrono;
 
@@ -21,7 +22,8 @@ int main()
     //AllAssignments.push_back(new DayThree(FileParser("Input\\Day3.txt")));
     //AllAssignments.push_back(new DayFour(FileParser("Input\\Day4.txt")));
     //AllAssignments.push_back(new DayFive(FileParser("Input\\Day5.txt")));
-    AllAssignments.push_back(new DaySix(FileParser("Input\\Day6.txt")));
+    //AllAssignments.push_back(new DaySix(FileParser("Input\\Day6.txt")));
+    AllAssignments.push_back(new DaySeven(FileParser("Input\\Day7.txt")));
 
     steady_clock::time_point start;
     steady_clock::time_point finish;
