@@ -8,7 +8,7 @@ DayFive::DayFive(std::vector<std::string> parsedFile) : ParsedFile(parsedFile)
 
 void DayFive::Initialize()
 {
-	std::vector<std::vector<int>> pageNumbers;
+	std::vector<std::vector<size_t>> pageNumbers;
 	int iterator = 0;
 
 	while (ParsedFile[iterator].size() != 0)
@@ -25,7 +25,7 @@ void DayFive::Initialize()
 
 	while (iterator < ParsedFile.size())
 	{
-		std::vector<int> numbers;
+		std::vector<size_t> numbers;
 		numbers.push_back(std::stoi(ParsedFile[iterator].substr(0, 2)));
 
 		size_t pos = ParsedFile[iterator].find(',');
@@ -55,7 +55,7 @@ void DayFive::Initialize()
 }
 void DayFive::RunAssignment()
 {
-	int result = 0;
+	size_t result = 0;
 
 	for (size_t i = 0; i < OrderedPageNumbers.size(); i++)
 	{
@@ -66,7 +66,7 @@ void DayFive::RunAssignment()
 }
 void DayFive::RunBonusAssignment()
 {
-	int result = 0;
+	size_t result = 0;
 
 	for (size_t i = 0; i < NotOrderedPageNumbers.size(); i++)
 	{
@@ -78,13 +78,13 @@ void DayFive::RunBonusAssignment()
 	std::cout << "Result: " << result << std::endl;
 }
 
-void DayFive::OrderPageNumbers(std::vector<int>& numbers)
+void DayFive::OrderPageNumbers(std::vector<size_t>& numbers)
 {
 	std::vector<std::pair<size_t, size_t>>::iterator it;
 
 	for (size_t i = 0; i < numbers.size(); i++)
 	{
-		std::vector<int> rulesFound;
+		std::vector<size_t> rulesFound;
 
 		for (it = RuleSet.begin(); it != RuleSet.end();)
 		{
@@ -104,7 +104,7 @@ void DayFive::OrderPageNumbers(std::vector<int>& numbers)
 			{
 				if (rulesFound[j] == numbers[k])
 				{
-					int temp = numbers[i];
+					size_t temp = numbers[i];
 
 					numbers[i] = numbers[k];
 					numbers[k] = temp;
@@ -116,13 +116,13 @@ void DayFive::OrderPageNumbers(std::vector<int>& numbers)
 	}
 }
 
-bool DayFive::CheckRuleSet(std::vector<int> numbers)
+bool DayFive::CheckRuleSet(std::vector<size_t> numbers)
 {
 	std::vector<std::pair<size_t, size_t>>::iterator it;
 
 	for (size_t i = 0; i < numbers.size(); i++)
 	{
-		std::vector<int> rulesFound;
+		std::vector<size_t> rulesFound;
 
 		for (it = RuleSet.begin(); it != RuleSet.end();)
 		{

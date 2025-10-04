@@ -18,6 +18,11 @@ void DaySix::RunAssignment()
 	size_t distinctPos = 0;
 
 	bool outOfBounce = false;
+	
+	if (guardLoc.first == -1 || guardLoc.second == -1)
+	{
+		return;
+	}
 
 	while (!outOfBounce)
 	{
@@ -82,4 +87,6 @@ std::pair<int, int> DaySix::FindCharacterLoc(const char* character)
 			}
 		}
 	}
+
+	return std::make_pair(-1, -1);
 }

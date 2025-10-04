@@ -24,25 +24,25 @@
     <ClCompile Include="AdventOfCode24.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DayOne.cpp">
+    <ClCompile Include="Days\DayTwo.cpp">
       <Filter>Source Files\Days</Filter>
     </ClCompile>
-    <ClCompile Include="DayTwo.cpp">
+    <ClCompile Include="Days\DayThree.cpp">
       <Filter>Source Files\Days</Filter>
     </ClCompile>
-    <ClCompile Include="DayThree.cpp">
+    <ClCompile Include="Days\DaySix.cpp">
       <Filter>Source Files\Days</Filter>
     </ClCompile>
-    <ClCompile Include="DayFour.cpp">
+    <ClCompile Include="Days\DaySeven.cpp">
       <Filter>Source Files\Days</Filter>
     </ClCompile>
-    <ClCompile Include="DayFive.cpp">
+    <ClCompile Include="Days\DayOne.cpp">
       <Filter>Source Files\Days</Filter>
     </ClCompile>
-    <ClCompile Include="DaySix.cpp">
+    <ClCompile Include="Days\DayFour.cpp">
       <Filter>Source Files\Days</Filter>
     </ClCompile>
-    <ClCompile Include="DaySeven.cpp">
+    <ClCompile Include="Days\DayFive.cpp">
       <Filter>Source Files\Days</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,25 +50,25 @@
     <ClInclude Include="Assignment.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DayOne.h">
+    <ClInclude Include="Days\DayFive.h">
       <Filter>Header Files\Days</Filter>
     </ClInclude>
-    <ClInclude Include="DayTwo.h">
+    <ClInclude Include="Days\DayFour.h">
       <Filter>Header Files\Days</Filter>
     </ClInclude>
-    <ClInclude Include="DayThree.h">
+    <ClInclude Include="Days\DayOne.h">
       <Filter>Header Files\Days</Filter>
     </ClInclude>
-    <ClInclude Include="DayFour.h">
+    <ClInclude Include="Days\DaySeven.h">
       <Filter>Header Files\Days</Filter>
     </ClInclude>
-    <ClInclude Include="DayFive.h">
+    <ClInclude Include="Days\DaySix.h">
       <Filter>Header Files\Days</Filter>
     </ClInclude>
-    <ClInclude Include="DaySix.h">
+    <ClInclude Include="Days\DayThree.h">
       <Filter>Header Files\Days</Filter>
     </ClInclude>
-    <ClInclude Include="DaySeven.h">
+    <ClInclude Include="Days\DayTwo.h">
       <Filter>Header Files\Days</Filter>
     </ClInclude>
   </ItemGroup>

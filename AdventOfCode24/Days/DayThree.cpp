@@ -86,7 +86,7 @@ int DayThree::CalculateResult()
 		bool invalid = false;
 		std::string tempString = "";
 
-		for (int i = it->first; i < it->second; i++)
+		for (size_t i = it->first; i < it->second; i++)
 		{
 			if (Input[i] == ',')
 			{

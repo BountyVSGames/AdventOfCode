@@ -1,5 +1,5 @@
 #pragma once
-#include "Assignment.h"
+#include "../Assignment.h"
 class DaySix : public Assignment
 {
 	enum GuardDirection

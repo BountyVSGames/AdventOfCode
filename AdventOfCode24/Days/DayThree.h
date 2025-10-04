@@ -1,6 +1,6 @@
 #pragma once
 #include <map>
-#include "Assignment.h"
+#include "../Assignment.h"
 
 class DayThree : public Assignment
 {

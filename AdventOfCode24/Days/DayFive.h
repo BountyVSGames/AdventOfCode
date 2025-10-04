@@ -1,6 +1,6 @@
 #pragma once
 #include <map>
-#include "Assignment.h"
+#include "../Assignment.h"
 
 class DayFive : public Assignment
 {
@@ -14,13 +14,13 @@ public:
 	void RunBonusAssignment();
 
 private:
-	void OrderPageNumbers(std::vector<int>& numbers);
+	void OrderPageNumbers(std::vector<size_t>& numbers);
 
-	bool CheckRuleSet(std::vector<int> numbers);
+	bool CheckRuleSet(std::vector<size_t> numbers);
 
 	std::vector<std::string> ParsedFile;
 	std::vector<std::pair<size_t, size_t>> RuleSet;
-	std::vector<std::vector<int>> OrderedPageNumbers;
-	std::vector<std::vector<int>> NotOrderedPageNumbers;
+	std::vector<std::vector<size_t>> OrderedPageNumbers;
+	std::vector<std::vector<size_t>> NotOrderedPageNumbers;
 };
 
