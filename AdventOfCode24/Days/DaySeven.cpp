@@ -121,14 +121,16 @@ bool DaySeven::IsEquationPossible(long long expectedResultEquation, std::vector<
 			}
 			else if (op == "||")
 			{
-				// Convert both the integers to string
-				std::string s1 = std::to_string(actualResult);
-				std::string s2 = std::to_string(numbersEquation[i + 1]);
+				long long multiplier = 1;
+				long long it = numbersEquation[i + 1];
 
-				// Concatenate both strings
-				std::string s = s1 + s2;
+				while (it > 0)
+				{
+					multiplier *= 10;
+					it /= 10;
+				}
 
-				actualResult = stoll(s);
+				actualResult = (actualResult * multiplier) + numbersEquation[i + 1];
 			}
 
 			index /= operators.size();
