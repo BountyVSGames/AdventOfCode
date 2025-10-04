@@ -11,10 +11,10 @@ public:
 	void RunAssignment();
 	void RunBonusAssignment();
 private:
-	bool IsEquationPossible(size_t expectedResultEquation, std::vector<size_t> numbersEquation);
+	bool IsEquationPossible(long long expectedResultEquation, std::vector<size_t> numbersEquation);
+	bool IsEquationPossible(long long expectedResultEquation, std::vector<size_t> numbersEquation, std::vector<std::string> operators);
 
-	size_t result;
-
+	std::vector<std::pair<long long, std::vector<size_t>>> Equations;
 	std::vector<std::string> ParsedFile;
 };
 
