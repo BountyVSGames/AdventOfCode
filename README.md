@@ -4,13 +4,15 @@ This is a repository of my work on the assignments of the Advent of Code. Every 
 
 The challenge of advent of code has been going on since 2015, but so far I have only participated in these editions: 2023-2024.
 
-The puzzle inputs are not included in this repo, as requested by the creator https://adventofcode.com/about#faq_copying. If you would like to test any of the code implementation, please go on to the advent of code website and either login in or create a new account, get the input for that day, create a .txt file in the project folder, under "Input/" called Day + number of the day .txt. For example: "\AdventOfCode24\Input\Day1.txt"
+The puzzle inputs are not included in this repo, as requested by the creator https://adventofcode.com/about#faq\_copying. If you would like to test any of the code implementation, please go on to the advent of code website and either login in or create a new account, get the input for that day, create a .txt file in the project folder, under "Input/" called Day + number of the day .txt. For example: "\\AdventOfCode24\\Input\\Day1.txt"
 
 # Link towards the advent of code:
+
+https://adventofcode.com/2023/
 
 https://adventofcode.com/2024/
 
 # Current Star Count:
 
-13
+2/50 2023 edition. 14/50 - 2024 edition
 
