@@ -2,7 +2,7 @@
 
 DayNine::DayNine(std::vector<std::string> parsedFile) : ParsedFile(parsedFile)
 {
-
+	IndividualFreeSectorCount = 0;
 }
 
 void DayNine::Initialize()
@@ -36,13 +36,13 @@ void DayNine::Initialize()
 				DiskMap.push_back(-1);
 				sector.push_back(-1);
 
-				FreeSectorCount += 1;
+				IndividualFreeSectorCount += 1;
 			}		
 
 			if (value != 0)
 			{				
 				SectoredDiskMap.push_back(sector);
-				IdsFreeSectors.push_back({ SectoredDiskMap.size(), sector.size() });
+				IdsFreeSectors.push_back({ SectoredDiskMap.size() - 1, sector.size() });
 			}
 		}
 	}
@@ -69,15 +69,19 @@ void DayNine::RunBonusAssignment()
 	MoveFileBlocks();
 
 	int64_t result = 0;
+	long long index = 0;
 
-	for (size_t i = 0; i < DiskMap.size(); i++)
+	for (size_t i = 0; i < SectoredDiskMap.size(); i++)
 	{
-		if (DiskMap[i] == -1)
+		for (size_t j = 0; j < SectoredDiskMap[i].size(); j++)
 		{
-			continue;
-		}
+			if (SectoredDiskMap[i][j] != -1)
+			{
+				result += (index * SectoredDiskMap[i][j]);		
+			}
 
-		result += (i * DiskMap[i]);
+			index += 1;
+		}
 	}
 
 	std::cout << "Resulting filesystem checksum: " << result << std::endl;
@@ -87,16 +91,16 @@ void DayNine::MoveFile()
 {
 	int indexToSwap = GetFirstIndexOfValue(DiskMap, -1);
 
-	for (int i = DiskMap.size() - 1; i >= 0; i--)
+	for (int i = ((int)DiskMap.size() - 1); i >= 0; i--)
 	{
-		if (FreeSectorCount == 0)
+		if (IndividualFreeSectorCount == 0)
 		{
 			break;
 		}
 
 		if (DiskMap[i] == -1)
 		{
-			FreeSectorCount -= 1;
+			IndividualFreeSectorCount -= 1;
 			continue;
 		}
 
@@ -109,7 +113,7 @@ void DayNine::MoveFile()
 				
 				indexToSwap = GetFirstIndexOfValue(DiskMap, -1);
 
-				FreeSectorCount -= 1;
+				IndividualFreeSectorCount -= 1;
 				break;
 			}
 		}
@@ -119,24 +123,62 @@ void DayNine::MoveFileBlocks()
 {
 	int freeZoneCounter = 1;
 
-	for (int i = SectoredDiskMap.size() - 1; i > 0; i--)
+	for (int i = ((int)SectoredDiskMap.size() - 1); i > 0; i--)
 	{
 		if (SectoredDiskMap[i][0] != -1)
 		{
-			
-		}
+			for (size_t j = 0; j < IdsFreeSectors.size(); j++)
+			{
+				if (IdsFreeSectors[j].first > i)
+				{
+					break;
+				}
 
-		//std::cout << SectoredDiskMap[i][0] << std::endl;
-	}
+				if(SectoredDiskMap[i].size() < IdsFreeSectors[j].second)
+				{
+					IdsFreeSectors[j].second -= SectoredDiskMap[i].size();
+
+					SectoredDiskMap[IdsFreeSectors[j].first].resize(IdsFreeSectors[j].second);
+					SectoredDiskMap.insert(SectoredDiskMap.begin() + IdsFreeSectors[j].first, SectoredDiskMap[i]);
+
+					i += 1;
+
+					for (size_t k = j; k < IdsFreeSectors.size(); k++)
+					{
+						IdsFreeSectors[k].first += 1;
+					}
+					for (size_t k = 0; k < SectoredDiskMap[i].size(); k++)
+					{
+						SectoredDiskMap[i][k] = -1;
+					}
+
+					break;
+				}
+				else if (IdsFreeSectors[j].second == SectoredDiskMap[i].size())
+				{
+					for (size_t k = 0; k < SectoredDiskMap[i].size(); k++)
+					{
+						SectoredDiskMap[IdsFreeSectors[j].first][k] = SectoredDiskMap[i][k];
+						SectoredDiskMap[i][k] = -1;
+					}
+
+					IdsFreeSectors.erase(IdsFreeSectors.begin() + j);
+					break;
+				}
+			}
+		}
+	}	
 }
 
 int DayNine::GetFirstIndexOfValue(std::vector<int> list, int value)
 {
-	for (size_t i = 0; i < list.size(); i++)
+	for (int i = 0; i < list.size(); i++)
 	{
 		if (list[i] == value)
 		{
 			return i;
 		}
 	}
+
+	return -1;
 }

@@ -15,7 +15,7 @@ private:
 	std::vector<std::string> ParsedFile;
 	std::vector<int> DiskMap;
 
-	int FreeSectorCount;
+	int IndividualFreeSectorCount;
 
 	std::vector<std::vector<int>> SectoredDiskMap;
 	std::vector<std::pair<size_t, size_t>> IdsFreeSectors;
