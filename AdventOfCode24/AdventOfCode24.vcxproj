@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AdventOfCode24.cpp" />
+    <ClCompile Include="Days\DayEleven.cpp" />
     <ClCompile Include="Days\DayFive.cpp" />
     <ClCompile Include="Days\DayFour.cpp" />
     <ClCompile Include="Days\DayNine.cpp" />
@@ -139,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assignment.h" />
+    <ClInclude Include="Days\DayEleven.h" />
     <ClInclude Include="Days\DayFive.h" />
     <ClInclude Include="Days\DayFour.h" />
     <ClInclude Include="Days\DayNine.h" />
