@@ -1,4 +1,5 @@
 #pragma once
+#include <map>
 #include "../Assignment.h"
 
 class DayEleven : public Assignment
@@ -12,12 +13,13 @@ public:
 	void RunAssignment();
 	void RunBonusAssignment();
 private:
-	std::vector<long long> Stones;
-	std::vector<long long> StonesAfterBlinking;
+	std::map<long long, long long> Stones;
 
 	std::vector<std::string> ParsedFile;
 
-	std::vector<long long> Blink(std::vector<long long> stones, int blinks, int it = 0);
+	void Blink(int blinks);
+
+	void AddValueToMap(std::map<long long, long long>& map, long long key, long long value);
 
 	std::vector<long long> DisectInt(long long target);
 	long long CombineInt(long long a, long long b);

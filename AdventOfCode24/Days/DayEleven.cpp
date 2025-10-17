@@ -3,94 +3,132 @@
 
 DayEleven::DayEleven(std::vector<std::string> parsedFile) : ParsedFile(parsedFile)
 {
+
+}
+
+void DayEleven::Initialize()
+{
 	std::stringstream ss;
-	ss << ParsedFile[0];	
+	ss << ParsedFile[0];
 
 	while (!ss.eof())
 	{
-		int found = 0;
+		long long found = 0;
 		std::string temp = "";
 
 		ss >> temp;
 
 		if (std::stringstream(temp) >> found)
 		{
-			Stones.push_back(found);
+			std::map<long long, long long>::iterator it = Stones.find(found);
+
+			if (it != Stones.end())
+			{
+				Stones[it->first] += 1;
+			}
+			else
+			{
+				Stones.insert({ found, 1 });
+			}
 		}
 	}
-}
-
-void DayEleven::Initialize()
-{
 }
 
 void DayEleven::RunAssignment()
 {
-	StonesAfterBlinking = Blink(Stones, 25);
+	Blink(25);
 
-	std::cout << "There are " << StonesAfterBlinking.size() << " stones" << std::endl;
+	long long result = 0;
+
+	for (std::map<long long, long long>::iterator it = Stones.begin(); it != Stones.end();)
+	{
+		result += it->second;
+
+		it++;
+	}
+
+	std::cout << "There are " << result << " stones" << std::endl;
 }
 
 void DayEleven::RunBonusAssignment()
 {
-	StonesAfterBlinking = Blink(StonesAfterBlinking, 50);
+	Blink(50);
 
-	std::cout << "There are " << StonesAfterBlinking.size() << " stones" << std::endl;
-}
+	long long result = 0;
+	int iterator = 0;
 
-std::vector<long long> DayEleven::Blink(std::vector<long long> stones, int blinks, int it)
-{
-	if (it == blinks)
+	for (std::map<long long, long long>::iterator it = Stones.begin(); it != Stones.end();)
 	{
-		return stones;
+		result += it->second;
+		it++;
 	}
 
-	std::vector<long long> newStoneArrangement;
+	std::cout << "There are " << result << " stones" << std::endl;
+}
 
-	for (size_t i = 0; i < stones.size(); i++)
+void DayEleven::Blink(int blinks)
+{
+	for (size_t i = 0; i < blinks; i++)
 	{
-		if (stones[i] == 0)
-		{
-			newStoneArrangement.push_back(1);
-		}
-		else
-		{
-			std::vector<long long> stoneValueSeperated = DisectInt(stones[i]);
+		std::map<long long, long long> newStoneMap;
 
-			if (!(stoneValueSeperated.size() % 2))
+		for (std::map<long long, long long>::iterator it = Stones.begin(); it != Stones.end();)
+		{
+			auto updateValue = Stones.extract(it++);
+
+			if (updateValue.key() == 0)
 			{
-				size_t halfWayIndex = stoneValueSeperated.size() / 2;
-				long long value = stoneValueSeperated[0];
-
-				for (size_t i = 1; i < halfWayIndex; i++)
-				{
-					value = CombineInt(value, stoneValueSeperated[i]);
-				}
-
-				newStoneArrangement.push_back(value);
-
-				value = stoneValueSeperated[halfWayIndex];
-
-				for (size_t i = halfWayIndex + 1; i < stoneValueSeperated.size(); i++)
-				{
-					value = CombineInt(value, stoneValueSeperated[i]);
-				}
-
-				newStoneArrangement.push_back(value);
+				AddValueToMap(newStoneMap, 1, updateValue.mapped());
 			}
 			else
 			{
-				newStoneArrangement.push_back(stones[i] * 2024);
+				std::vector<long long> stoneValueSeperated = DisectInt(updateValue.key());
+
+				if (stoneValueSeperated.size() % 2)
+				{
+					updateValue.key() *= 2024;
+
+					AddValueToMap(newStoneMap, updateValue.key(), updateValue.mapped());
+				}
+				else
+				{
+					size_t halfWayIndex = stoneValueSeperated.size() / 2;
+
+					long long left = stoneValueSeperated[0];
+					for (size_t k = 1; k < halfWayIndex; k++)
+					{
+						left = CombineInt(left, stoneValueSeperated[k]);
+					}
+
+					AddValueToMap(newStoneMap, left, updateValue.mapped());
+
+					long long right = stoneValueSeperated[halfWayIndex];
+					for (size_t k = halfWayIndex + 1; k < stoneValueSeperated.size(); k++)
+					{
+						right = CombineInt(right, stoneValueSeperated[k]);
+					}
+
+					AddValueToMap(newStoneMap, right, updateValue.mapped());
+				}
 			}
 		}
-	}
 
-	return Blink(newStoneArrangement, blinks, it + 1);
+		Stones = newStoneMap;
+	}
+}
+
+void DayEleven::AddValueToMap(std::map<long long, long long>& map, long long key, long long value)
+{
+	std::pair<std::map<long long, long long>::iterator, bool> result = map.try_emplace(key, value);
+
+	if (!result.second)
+	{
+		result.first->second += value;
+	}
 }
 
 std::vector<long long> DayEleven::DisectInt(long long target)
 {
-	std::vector<long long> tempValue;
 	std::vector<long long> value;
 
 	while (target > 0)
@@ -98,12 +136,24 @@ std::vector<long long> DayEleven::DisectInt(long long target)
 		long long digit = target % 10;
 		target /= 10;
 
-		tempValue.push_back(digit);
+		value.push_back(digit);
 	}
 
-	for (int i = (int)(tempValue.size() - 1); i >= 0; i--)
+	if (value.size() == 1)
 	{
-		value.push_back(tempValue[i]);
+		return value;
+	}
+
+	int valueSize = (int)value.size();
+	int maxIndexOfValue = (valueSize - 1);
+
+	for (int i = maxIndexOfValue; i >= (valueSize / 2); i--)
+	{
+		int indexToSwap = maxIndexOfValue - i;
+		long long temp = value[indexToSwap];
+
+		value[indexToSwap] = value[i];
+		value[i] = temp;
 	}
 
 	return value;
