@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include "../Assignment.h"
+
 class DayNine : public Assignment
 {
 public:
@@ -12,7 +13,6 @@ public:
 	void RunAssignment();
 	void RunBonusAssignment();
 private:
-	std::vector<std::string> ParsedFile;
 	std::vector<int> DiskMap;
 
 	int IndividualFreeSectorCount;

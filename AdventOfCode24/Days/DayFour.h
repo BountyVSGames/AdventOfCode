@@ -1,5 +1,6 @@
 #pragma once
 #include "../Assignment.h"
+
 class DayFour : public Assignment
 {
 public:
@@ -11,7 +12,6 @@ public:
 	void RunAssignment();
 	void RunBonusAssignment();
 private:
-	std::vector<std::string> ParsedFile;
 	std::vector<std::pair<int, int>> XCoordinates;
 	std::vector<std::pair<int, int>> ACoordinates;
 };

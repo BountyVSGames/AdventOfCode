@@ -1,7 +1,7 @@
 ﻿#include "DaySeven.h"
 #include <sstream>
 
-DaySeven::DaySeven(std::vector<std::string> parsedFile) : ParsedFile(parsedFile)
+DaySeven::DaySeven(std::vector<std::string> parsedFile) : Assignment(parsedFile)
 {
 
 }
@@ -90,15 +90,14 @@ bool DaySeven::IsEquationPossible(long long expectedResultEquation, std::vector<
 	return false;
 }
 
-//TODO: Requires improvement to increase speed
 bool DaySeven::IsEquationPossible(long long expectedResultEquation, std::vector<size_t> numbersEquation, std::vector<std::string> operators)
 {
-	int operatorSlotCount = numbersEquation.size() - 1;
+	int operatorSlotCount = (int)numbersEquation.size() - 1;
 	int totalCombination = 1;
 
 	for (size_t i = 0; i < operatorSlotCount; i++)
 	{
-		totalCombination *= operators.size();
+		totalCombination *= (int)operators.size();
 	}
 
 	for (size_t mask = 0; mask < totalCombination; mask++)

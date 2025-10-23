@@ -17,6 +17,5 @@ private:
 
     int SaveReports;
 
-    std::vector<std::string> ParsedFile;
     std::vector<std::vector<int>> Reports;
 };

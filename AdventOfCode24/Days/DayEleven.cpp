@@ -1,7 +1,7 @@
 #include "DayEleven.h"
 #include <sstream>
 
-DayEleven::DayEleven(std::vector<std::string> parsedFile) : ParsedFile(parsedFile)
+DayEleven::DayEleven(std::vector<std::string> parsedFile) : Assignment(parsedFile)
 {
 
 }

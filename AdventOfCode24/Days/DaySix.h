@@ -1,5 +1,6 @@
 #pragma once
 #include "../Assignment.h"
+
 class DaySix : public Assignment
 {
 	enum GuardDirection
@@ -20,7 +21,6 @@ public:
 	void RunBonusAssignment();
 
 private:
-	std::vector<std::string> ParsedFile;
 	std::pair<int, int> FindCharacterLoc(const char* character);
 };
 

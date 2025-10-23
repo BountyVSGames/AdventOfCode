@@ -1,6 +1,6 @@
 #include "DaySix.h"
 
-DaySix::DaySix(std::vector<std::string> parsedFile) : ParsedFile(parsedFile)
+DaySix::DaySix(std::vector<std::string> parsedFile) : Assignment(parsedFile)
 {
 
 }
@@ -83,7 +83,7 @@ std::pair<int, int> DaySix::FindCharacterLoc(const char* character)
 		{
 			if (ParsedFile[i][j] == *character)
 			{
-				return std::make_pair(i, j);
+				return std::make_pair((int)i, (int)j);
 			}
 		}
 	}

@@ -1,5 +1,6 @@
 #pragma once
 #include "../Assignment.h"
+
 class DaySeven : public Assignment
 {
 public:
@@ -15,6 +16,5 @@ private:
 	bool IsEquationPossible(long long expectedResultEquation, std::vector<size_t> numbersEquation, std::vector<std::string> operators);
 
 	std::vector<std::pair<long long, std::vector<size_t>>> Equations;
-	std::vector<std::string> ParsedFile;
 };
 

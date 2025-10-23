@@ -14,8 +14,6 @@ public:
     void RunBonusAssignment();
 
 private:
-    std::vector<std::string> ParsedFile;
-
     std::vector<int> FirstNumbers;
     std::vector<int> SecondNumbers;
     std::vector<int> Distance;

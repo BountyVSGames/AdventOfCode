@@ -1,6 +1,6 @@
 #include "DayOne.h"
 
-DayOne::DayOne(std::vector<std::string> parsedFile) : ParsedFile(parsedFile)
+DayOne::DayOne(std::vector<std::string> parsedFile) : Assignment(parsedFile)
 {
 	TotalDistance = 0;
 	SimulairityScore = 0;

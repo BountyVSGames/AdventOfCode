@@ -1,10 +1,9 @@
 #include "DayTwo.h"
 #include <sstream>
 
-DayTwo::DayTwo(std::vector<std::string> parsedFile) : ParsedFile(parsedFile)
+DayTwo::DayTwo(std::vector<std::string> parsedFile) : Assignment(parsedFile)
 {
 	SaveReports = 0;
-
 }
 
 void DayTwo::Initialize()

@@ -1,9 +1,9 @@
 #include "DayFive.h"
 #include <sstream>
 
-DayFive::DayFive(std::vector<std::string> parsedFile) : ParsedFile(parsedFile)
+DayFive::DayFive(std::vector<std::string> parsedFile) : Assignment(parsedFile)
 {
-
+	
 }
 
 void DayFive::Initialize()

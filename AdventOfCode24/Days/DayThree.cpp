@@ -1,7 +1,7 @@
 #include "DayThree.h"
 #include <sstream>
 
-DayThree::DayThree(std::vector<std::string> parsedFile) : ParsedFile(parsedFile)
+DayThree::DayThree(std::vector<std::string> parsedFile) : Assignment(parsedFile)
 {
 	for (size_t i = 0; i < ParsedFile.size(); i++)
 	{

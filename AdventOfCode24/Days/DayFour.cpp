@@ -1,8 +1,8 @@
 #include "DayFour.h"
 
-DayFour::DayFour(std::vector<std::string> parsedFile)
+DayFour::DayFour(std::vector<std::string> parsedFile) : Assignment(parsedFile)
 {
-	ParsedFile = parsedFile;
+
 }
 
 void DayFour::Initialize()

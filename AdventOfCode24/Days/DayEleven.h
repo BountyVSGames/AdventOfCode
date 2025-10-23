@@ -15,8 +15,6 @@ public:
 private:
 	std::map<long long, long long> Stones;
 
-	std::vector<std::string> ParsedFile;
-
 	void Blink(int blinks);
 
 	void AddValueToMap(std::map<long long, long long>& map, long long key, long long value);

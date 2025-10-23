@@ -17,7 +17,6 @@ private:
 	void RunConditionalChecks();
 	int CalculateResult();
 
-	std::vector<std::string> ParsedFile;
 	std::string Input;
 
 	std::map<size_t, size_t> MulIntructions;

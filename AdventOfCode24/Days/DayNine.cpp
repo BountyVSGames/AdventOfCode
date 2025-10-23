@@ -1,6 +1,6 @@
 #include "DayNine.h"
 
-DayNine::DayNine(std::vector<std::string> parsedFile) : ParsedFile(parsedFile)
+DayNine::DayNine(std::vector<std::string> parsedFile) : Assignment(parsedFile)
 {
 	IndividualFreeSectorCount = 0;
 }

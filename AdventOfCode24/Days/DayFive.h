@@ -18,7 +18,6 @@ private:
 
 	bool CheckRuleSet(std::vector<size_t> numbers);
 
-	std::vector<std::string> ParsedFile;
 	std::vector<std::pair<size_t, size_t>> RuleSet;
 	std::vector<std::vector<size_t>> OrderedPageNumbers;
 	std::vector<std::vector<size_t>> NotOrderedPageNumbers;
