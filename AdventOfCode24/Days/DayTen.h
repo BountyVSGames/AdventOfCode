@@ -11,5 +11,11 @@ public:
 	void Initialize();
 	void RunAssignment();
 	void RunBonusAssignment();
+	
+private:
+	int CalculatePossibleTrailFromHead(std::pair<int, int> startTrailCoor);
+
+	std::vector<std::pair<int, int>> TrailHeadCoor;
+	std::vector<std::pair<int, int>> EndTrailCoor;
 };
 
