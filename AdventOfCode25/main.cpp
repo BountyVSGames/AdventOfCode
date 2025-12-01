@@ -1,0 +1,61 @@
+#include <fstream>
+#include <chrono>
+
+#include "Days/Header/DayOne.h"
+
+using namespace std::chrono;
+
+std::vector<std::string> FileParser(std::string filePath);
+std::vector<Assignment*> AllAssignments;
+
+int main()
+{
+    AllAssignments.push_back(new DayOne(FileParser("Input\\DayOne.txt")));
+
+    steady_clock::time_point start;
+    steady_clock::time_point finish;
+
+    long long duration = 0;
+
+    for (size_t i = 0; i < AllAssignments.size(); i++)
+    {
+        start = high_resolution_clock::now();
+
+        std::cout << "------------------------------------ " << AllAssignments[i]->GetAssignmentName() << " ------------------------------------" << std::endl;
+        AllAssignments[i]->Initialize();
+        AllAssignments[i]->RunAssignment();
+        std::cout << "---------------------------------------------------------------------------------" << std::endl;
+        AllAssignments[i]->RunBonusAssignment();
+        std::cout << "---------------------------------------------------------------------------------" << std::endl;
+
+        finish = high_resolution_clock::now();
+        duration = duration_cast<milliseconds>(finish - start).count();
+
+        std::cout << "This assignment took " << duration << " miliseconds" << std::endl;
+        std::cout << "---------------------------------------------------------------------------------" << std::endl << std::endl;
+    }
+
+    for (int i = (int)AllAssignments.size() - 1; i >= 0; i--)
+    {
+        delete AllAssignments[i];
+    }
+}
+
+/// <summary>
+/// Reads through the file given and return each line as a vector entry
+/// </summary>
+/// <param name="filePath">Path to txt file to parse</param>
+/// <returns>Return vector of strings containing each line per entry</returns>
+std::vector<std::string> FileParser(std::string filePath)
+{
+    std::ifstream currentFile(filePath);
+    std::vector<std::string> returnValue;
+    std::string tempText;
+
+    while (std::getline(currentFile, tempText))
+    {
+        returnValue.push_back(tempText);
+    }
+
+    return returnValue;
+}
