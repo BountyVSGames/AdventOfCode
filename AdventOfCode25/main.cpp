@@ -2,6 +2,7 @@
 #include <chrono>
 
 #include "Days/Header/DayOne.h"
+#include "Days/Header/DayTwo.h"
 
 using namespace std::chrono;
 
@@ -11,6 +12,7 @@ std::vector<Assignment*> AllAssignments;
 int main()
 {
     AllAssignments.push_back(new DayOne(FileParser("Input\\DayOne.txt")));
+    AllAssignments.push_back(new DayTwo(FileParser("Input\\DayTwo.txt")));
 
     steady_clock::time_point start;
     steady_clock::time_point finish;

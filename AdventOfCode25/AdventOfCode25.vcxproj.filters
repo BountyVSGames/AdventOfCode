@@ -30,12 +30,18 @@
     <ClCompile Include="Days\Source\DayOne.cpp">
       <Filter>Source Files\Days</Filter>
     </ClCompile>
+    <ClCompile Include="Days\Source\DayTwo.cpp">
+      <Filter>Source Files\Days</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assignment.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Days\Header\DayOne.h">
+      <Filter>Header Files\Days</Filter>
+    </ClInclude>
+    <ClInclude Include="Days\Header\DayTwo.h">
       <Filter>Header Files\Days</Filter>
     </ClInclude>
   </ItemGroup>

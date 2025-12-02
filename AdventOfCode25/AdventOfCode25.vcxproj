@@ -127,11 +127,13 @@
   <ItemGroup>
     <ClCompile Include="Assignment.cpp" />
     <ClCompile Include="Days\Source\DayOne.cpp" />
+    <ClCompile Include="Days\Source\DayTwo.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assignment.h" />
     <ClInclude Include="Days\Header\DayOne.h" />
+    <ClInclude Include="Days\Header\DayTwo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
