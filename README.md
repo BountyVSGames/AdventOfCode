@@ -8,16 +8,13 @@ The puzzle inputs are not included in this repo, as requested by the creator htt
 
 # Link towards the advent of code:
 
-https://adventofcode.com/2023/
-
-https://adventofcode.com/2024/
-
+https://adventofcode.com/2023/ <br>
+https://adventofcode.com/2024/ <br>
 https://adventofcode.com/2025/
 
 # Current Star Count:
 
-02/50 - 2023 edition. 
-17/50 - 2024 edition.
-
+02/50 - 2023 edition. <br>
+17/50 - 2024 edition. <br>
 03/24 - 2025 edition.
 
