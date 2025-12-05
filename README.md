@@ -14,7 +14,7 @@ https://adventofcode.com/2025/
 
 # Current Star Count:
 
-02/50 - 2023 edition. <br>
+04/50 - 2023 edition. <br>
 17/50 - 2024 edition. <br>
-03/24 - 2025 edition.
+06/24 - 2025 edition.
 
