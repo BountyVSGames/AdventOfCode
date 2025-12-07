@@ -7,6 +7,7 @@
 #include "Days/Header/DayThree.h"
 #include "Days/Header/DayFour.h"
 #include "Days/Header/DayFive.h"
+#include "Days/Header/DaySix.h"
 #pragma endregion
 
 using namespace std::chrono;
@@ -16,11 +17,12 @@ std::vector<Assignment*> AllAssignments;
 
 int main()
 {
-    //AllAssignments.push_back(new DayOne(FileParser("Input\\DayOne.txt")));
-    //AllAssignments.push_back(new DayTwo(FileParser("Input\\DayTwo.txt")));
-    //AllAssignments.push_back(new DayThree(FileParser("Input\\DayThree.txt")));
-    //AllAssignments.push_back(new DayFour(FileParser("Input\\DayFour.txt")));
+    AllAssignments.push_back(new DayOne(FileParser("Input\\DayOne.txt")));
+    AllAssignments.push_back(new DayTwo(FileParser("Input\\DayTwo.txt")));
+    AllAssignments.push_back(new DayThree(FileParser("Input\\DayThree.txt")));
+    AllAssignments.push_back(new DayFour(FileParser("Input\\DayFour.txt")));
     AllAssignments.push_back(new DayFive(FileParser("Input\\DayFive.txt")));
+    AllAssignments.push_back(new DaySix(FileParser("Input\\DaySix.txt")));
 
     steady_clock::time_point start;
     steady_clock::time_point finish;

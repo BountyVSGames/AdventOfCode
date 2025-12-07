@@ -49,10 +49,10 @@ void DayTwo::RunBonusAssignment()
 {
 	//Run through all valid ids to see if sequence repeats more then once
 
-	for (size_t i = 0; i < ValidID.size(); i++)
-	{
-		std::cout << ValidID[i] << std::endl;
-	}
+	//for (size_t i = 0; i < ValidID.size(); i++)
+	//{
+	//	std::cout << ValidID[i] << std::endl;
+	//}
 }
 
 bool DayTwo::IsIDValid(long long id)
