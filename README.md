@@ -16,5 +16,5 @@ https://adventofcode.com/2025/
 
 04/50 - 2023 edition. <br>
 17/50 - 2024 edition. <br>
-10/24 - 2025 edition.
+11/24 - 2025 edition.
 
