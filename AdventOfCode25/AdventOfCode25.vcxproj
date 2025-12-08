@@ -126,6 +126,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Assignment.cpp" />
+    <ClCompile Include="Days\Source\DayEight.cpp" />
     <ClCompile Include="Days\Source\DayFive.cpp" />
     <ClCompile Include="Days\Source\DayFour.cpp" />
     <ClCompile Include="Days\Source\DayOne.cpp" />
@@ -137,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assignment.h" />
+    <ClInclude Include="Days\Header\DayEight.h" />
     <ClInclude Include="Days\Header\DayFive.h" />
     <ClInclude Include="Days\Header\DayFour.h" />
     <ClInclude Include="Days\Header\DayOne.h" />
