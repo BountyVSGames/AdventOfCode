@@ -10,6 +10,7 @@
 #include "Days/Header/DaySix.h"
 #include "Days/Header/DaySeven.h"
 #include "Days/Header/DayEight.h"
+#include "Days/Header/DayNine.h"
 #pragma endregion
 
 using namespace std::chrono;
@@ -19,14 +20,15 @@ std::vector<Assignment*> AllAssignments;
 
 int main()
 {
-    AllAssignments.push_back(new DayOne(FileParser("Input\\DayOne.txt")));
-    AllAssignments.push_back(new DayTwo(FileParser("Input\\DayTwo.txt")));
-    AllAssignments.push_back(new DayThree(FileParser("Input\\DayThree.txt")));
-    AllAssignments.push_back(new DayFour(FileParser("Input\\DayFour.txt")));
-    AllAssignments.push_back(new DayFive(FileParser("Input\\DayFive.txt")));
-    AllAssignments.push_back(new DaySix(FileParser("Input\\DaySix.txt")));
-    AllAssignments.push_back(new DaySeven(FileParser("Input\\DaySeven.txt")));
-    AllAssignments.push_back(new DayEight(FileParser("Input\\DayEight.txt")));
+    //AllAssignments.push_back(new DayOne(FileParser("Input\\DayOne.txt")));
+    //AllAssignments.push_back(new DayTwo(FileParser("Input\\DayTwo.txt")));
+    //AllAssignments.push_back(new DayThree(FileParser("Input\\DayThree.txt")));
+    //AllAssignments.push_back(new DayFour(FileParser("Input\\DayFour.txt")));
+    //AllAssignments.push_back(new DayFive(FileParser("Input\\DayFive.txt")));
+    //AllAssignments.push_back(new DaySix(FileParser("Input\\DaySix.txt")));
+    //AllAssignments.push_back(new DaySeven(FileParser("Input\\DaySeven.txt")));
+    //AllAssignments.push_back(new DayEight(FileParser("Input\\DayEight.txt")));
+    AllAssignments.push_back(new DayNine(FileParser("Input\\DayNine.txt")));
 
     steady_clock::time_point start;
     steady_clock::time_point finish;
