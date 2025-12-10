@@ -19,13 +19,13 @@ std::vector<Assignment*> AllAssignments;
 
 int main()
 {
-    //AllAssignments.push_back(new DayOne(FileParser("Input\\DayOne.txt")));
-    //AllAssignments.push_back(new DayTwo(FileParser("Input\\DayTwo.txt")));
-    //AllAssignments.push_back(new DayThree(FileParser("Input\\DayThree.txt")));
-    //AllAssignments.push_back(new DayFour(FileParser("Input\\DayFour.txt")));
-    //AllAssignments.push_back(new DayFive(FileParser("Input\\DayFive.txt")));
-    //AllAssignments.push_back(new DaySix(FileParser("Input\\DaySix.txt")));
-    //AllAssignments.push_back(new DaySeven(FileParser("Input\\DaySeven.txt")));
+    AllAssignments.push_back(new DayOne(FileParser("Input\\DayOne.txt")));
+    AllAssignments.push_back(new DayTwo(FileParser("Input\\DayTwo.txt")));
+    AllAssignments.push_back(new DayThree(FileParser("Input\\DayThree.txt")));
+    AllAssignments.push_back(new DayFour(FileParser("Input\\DayFour.txt")));
+    AllAssignments.push_back(new DayFive(FileParser("Input\\DayFive.txt")));
+    AllAssignments.push_back(new DaySix(FileParser("Input\\DaySix.txt")));
+    AllAssignments.push_back(new DaySeven(FileParser("Input\\DaySeven.txt")));
     AllAssignments.push_back(new DayEight(FileParser("Input\\DayEight.txt")));
 
     steady_clock::time_point start;
