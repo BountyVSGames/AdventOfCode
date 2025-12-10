@@ -3,7 +3,11 @@
 
 struct Rectangle
 {
-	Rectangle() {};
+	Rectangle() 
+	{
+		Size = 0;
+	};
+
 	Rectangle(std::pair<int, int> firstPos, std::pair<int, int> secondPos, long long size)
 	{
 		FirstPos = firstPos;
@@ -33,7 +37,7 @@ public:
 	void Initialize();
 	void RunAssignment();
 	void RunBonusAssignment();
-
+private:
 	std::vector<std::pair<int, int>> AllCoors;
 	std::vector<Rectangle> AllRectangles;
 
