@@ -3,27 +3,39 @@
 
 struct Circuit;
 
-struct Vec3
+struct JunctionBox
 {
-	int coor[3];
-	Circuit* circuit;
-
-	bool operator==(const Vec3& other) const
-	{
-		if (coor[0] == other.coor[0] &&
-			coor[1] == other.coor[1] &&
-			coor[2] == other.coor[2])
-		{
-			return true;
-		}
-
-		return false;
-	}
+	double coor[3];
 };
 
 struct Circuit
 {
-	std::vector<Vec3> JunctionBoxes;
+	Circuit(size_t a, size_t b)
+	{
+		startBoxA = a;
+		startBoxB = b;
+
+		junBox.push_back(a);
+		junBox.push_back(b);
+	}
+
+	size_t startBoxA;
+	size_t startBoxB;
+
+	std::vector<size_t> junBox;
+};
+
+struct JunctionPair
+{
+	JunctionPair(size_t a, size_t b, double dist) : indxBoxA(a), indxBoxB(b)
+	{
+		distance = dist;
+	}
+
+	size_t indxBoxA;
+	size_t indxBoxB;
+
+	double distance;
 };
 
 class DayEight : public Assignment
@@ -38,9 +50,12 @@ public:
 	void RunBonusAssignment();
 
 private:
-	std::vector<Vec3> AllPos;
+	std::vector<JunctionBox> AllPos;
+	std::vector<JunctionPair> AllPairs;
+	std::vector<Circuit> AllCircuits;
 
-	double GetClosestBox(const Vec3& target, Vec3& closestBox);
-	double Distance(const Vec3& a, const Vec3& b);
+	double Distance(const JunctionBox& a, const JunctionBox& b);
+	void QuickSortJunctionPair(std::vector<JunctionPair>& pairsToSort, int left, int right);
+	void QuickSortCircuits(std::vector<Circuit>& pairsToSort, int left, int right);
 };
 
