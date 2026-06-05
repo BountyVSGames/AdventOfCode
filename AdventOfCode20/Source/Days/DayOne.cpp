@@ -35,9 +35,9 @@ void DayOne::Initialize()
 
 void DayOne::RunAssignment()
 {
-	std::cout << firstAnswer << std::endl;
+	std::cout << "The product of the two entries that sum to 2020 is " << firstAnswer << std::endl;
 }
 void DayOne::RunBonusAssignment()
 {
-	std::cout << secondAnswer << std::endl;
+	std::cout << "The product of the three entries that sum to 2020 is " << secondAnswer << std::endl;
 }

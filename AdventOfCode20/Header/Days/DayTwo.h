@@ -15,15 +15,17 @@ class DayTwo : public Assignment
 public:
 	DayTwo(std::vector<std::string> parsedFile);
 
-	std::string GetAssignmentName() { return "Day One"; };
+	std::string GetAssignmentName() { return "Day Two"; };
 
 	void Initialize();
 	void RunAssignment();
 	void RunBonusAssignment();
 
 private:
+	bool IsPasswordValidFirstPolicy(PasswordCheck passwordCheck);
+	bool IsPasswordValidSecondPolicy(PasswordCheck passwordCheck);
 	bool IsCharInRange(char c, int minCharIndx, int maxCharIndx);
 
-	//std::string 
+	std::vector<PasswordCheck> passwordChecks;
 };
 
