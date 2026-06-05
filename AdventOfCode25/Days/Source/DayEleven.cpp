@@ -22,6 +22,14 @@ void DayEleven::Initialize()
 		{
 			StartBonusDeviceIndex = (int)i;
 		}
+		else if (deviceString == "dac")
+		{
+			IndexDac = (int)i;
+		}
+		else if (deviceString == "fft")
+		{
+			IndexFft = (int)i;
+		}
 
 		labelToIndex.insert({ deviceString, (int)i });
 	}
@@ -70,13 +78,13 @@ void DayEleven::RunAssignment()
 
 void DayEleven::RunBonusAssignment()
 {
-	std::map<int, std::vector<int>>::iterator it;
-	int allPaths = 0;
-	std::vector<int> paths;
+	//std::map<int, std::vector<int>>::iterator it;
+	//int allPaths = 0;
+	//std::vector<int> paths;
 
-	GetAllPaths(StartBonusDeviceIndex, allPaths);
+	//GetAllPaths(StartBonusDeviceIndex, allPaths, paths);
 
-	std::cout << "There are a total of " << allPaths << " paths." << std::endl;
+	//std::cout << "There are a total of " << allPaths << " paths." << std::endl;
 }
 
 void DayEleven::GetAllPaths(int index, int& allPaths)
@@ -94,4 +102,31 @@ void DayEleven::GetAllPaths(int index, int& allPaths)
 			GetAllPaths(child, allPaths);
 		}
 	}
+}
+
+void DayEleven::GetAllPaths(int index, int& allPaths, std::vector<int>& current)
+{
+	std::unordered_map<int, std::vector<int>>::iterator it = AllConnectionPaths.find(index);
+
+	current.push_back(index);
+
+	for (int child : it->second)
+	{
+		if (child == -1)
+		{
+			bool dac = (std::find(current.begin(), current.end(), IndexDac) != current.end());
+			bool fft = (std::find(current.begin(), current.end(), IndexFft) != current.end());
+
+			if (dac && fft)
+			{
+				allPaths++;
+			}
+		}
+		else
+		{
+			GetAllPaths(child, allPaths, current);
+		}
+	}
+
+	current.pop_back();
 }

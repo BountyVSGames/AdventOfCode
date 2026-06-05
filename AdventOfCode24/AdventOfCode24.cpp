@@ -12,6 +12,7 @@
 #include "Days/DayNine.h"
 #include "Days/DayTen.h"
 #include "Days/DayEleven.h"
+#include "Days/DayNineteen.h"
 
 using namespace std::chrono;
 
@@ -20,16 +21,17 @@ std::vector<Assignment*> AllAssignments;
 
 int main()
 {
-    //AllAssignments.push_back(new DayOne(FileParser("Input\\Day1.txt")));
-    //AllAssignments.push_back(new DayTwo(FileParser("Input\\Day2.txt")));
-    //AllAssignments.push_back(new DayThree(FileParser("Input\\Day3.txt")));
-    //AllAssignments.push_back(new DayFour(FileParser("Input\\Day4.txt")));
-    //AllAssignments.push_back(new DayFive(FileParser("Input\\Day5.txt")));
-    //AllAssignments.push_back(new DaySix(FileParser("Input\\Day6.txt")));
-    //AllAssignments.push_back(new DaySeven(FileParser("Input\\Day7.txt")));
-    //AllAssignments.push_back(new DayNine(FileParser("Input\\Day9.txt")));
-    //AllAssignments.push_back(new DayTen(FileParser("Input\\Day10.txt")));
-    //AllAssignments.push_back(new DayEleven(FileParser("Input\\Day11.txt")));
+    AllAssignments.push_back(new DayOne(FileParser("Input\\Day1.txt")));
+    AllAssignments.push_back(new DayTwo(FileParser("Input\\Day2.txt")));
+    AllAssignments.push_back(new DayThree(FileParser("Input\\Day3.txt")));
+    AllAssignments.push_back(new DayFour(FileParser("Input\\Day4.txt")));
+    AllAssignments.push_back(new DayFive(FileParser("Input\\Day5.txt")));
+    AllAssignments.push_back(new DaySix(FileParser("Input\\Day6.txt")));
+    AllAssignments.push_back(new DaySeven(FileParser("Input\\Day7.txt")));
+    AllAssignments.push_back(new DayNine(FileParser("Input\\Day9.txt")));
+    AllAssignments.push_back(new DayTen(FileParser("Input\\Day10.txt")));
+    AllAssignments.push_back(new DayEleven(FileParser("Input\\Day11.txt")));
+    AllAssignments.push_back(new DayNineteen(FileParser("Input\\Day19.txt")));
 
     steady_clock::time_point start;
     steady_clock::time_point finish;
