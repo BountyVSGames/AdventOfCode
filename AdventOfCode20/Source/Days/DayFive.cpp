@@ -15,11 +15,13 @@ void DayFive::Initialize()
 
 	for (size_t i = 0; i < ParsedFile.size(); i++)
 	{
+		int it = 0;
+
 		rowRange = std::pair<int, int>(0, 127);
 		columnRange = std::pair<int, int>(0, 7);
 
-		int row = GetRow(rowCharRule, rowRange, ParsedFile[i]);
-		int column = GetRow(columnCharRule, columnRange, ParsedFile[i]);
+		int row = GetRow(rowCharRule, rowRange, ParsedFile[i], it);
+		int column = GetRow(columnCharRule, columnRange, ParsedFile[i], it);
 
 		int seatID = row * 8 + column;
 		seatIDs.push_back(seatID);
@@ -37,7 +39,7 @@ void DayFive::RunBonusAssignment()
 	std::cout << "My seat is ID: " << GetMissingSeat(seatIDs) << std::endl;
 }
 
-int DayFive::GetRow(std::pair<char, char>& charRule, std::pair<int, int>& range, std::string& chars)
+int DayFive::GetRow(std::pair<char, char>& charRule, std::pair<int, int>& range, std::string& chars, int& it)
 {
 	if (range.first == range.second)
 	{
@@ -46,11 +48,12 @@ int DayFive::GetRow(std::pair<char, char>& charRule, std::pair<int, int>& range,
 
 	int halfWayValue = (range.first + range.second) / 2;
 
-	range.first = chars[0] == charRule.first ? halfWayValue + 1 : range.first;
-	range.second = chars[0] == charRule.second ? halfWayValue : range.second;
+	range.first = chars[it] == charRule.first ? halfWayValue + 1 : range.first;
+	range.second = chars[it] == charRule.second ? halfWayValue : range.second;
 
-	chars.erase(0, 1);
-	return GetRow(charRule, range, chars);
+	it += 1;
+
+	return GetRow(charRule, range, chars, it);
 }
 int DayFive::GetMissingSeat(std::vector<int>& seatIDs)
 {
@@ -58,7 +61,7 @@ int DayFive::GetMissingSeat(std::vector<int>& seatIDs)
 	{
 		if (seatIDs[i] != seatIDs[0] + i)
 		{
-			return seatIDs[0] + i;
+			return seatIDs[0] + (int)i;
 		}
 	}
 

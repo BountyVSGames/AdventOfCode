@@ -14,7 +14,7 @@ public:
 private:
 	std::vector<int> seatIDs;
 
-	int GetRow(std::pair<char, char>& charRule, std::pair<int, int>& range, std::string& chars);
+	int GetRow(std::pair<char, char>& charRule, std::pair<int, int>& range, std::string& chars, int& it);
 	int GetMissingSeat(std::vector<int>& seatIDs);
 	
 	void BubbleSort(std::vector<int>& vecToSort);

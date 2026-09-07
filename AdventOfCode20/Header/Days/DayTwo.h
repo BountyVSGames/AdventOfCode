@@ -5,9 +5,9 @@ class DayTwo : public Assignment
 {
 	struct PasswordCheck
 	{
-		int minCharLenght;
-		int maxCharLenght;
-		char charRequirement;
+		size_t minCharLenght = 0;
+		size_t maxCharLenght = 0;
+		char charRequirement = 0;
 		std::string password;
 	};
 

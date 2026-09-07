@@ -8,14 +8,14 @@ void DayTwo::Initialize()
 {
 	for (size_t i = 0; i < ParsedFile.size(); i++)
 	{
-		int splitIndex = ParsedFile[i].find(':');
-		int dashIndex = ParsedFile[i].find('-');
-		int spaceIndex = ParsedFile[i].find_first_of(' ');
+		size_t splitIndex = ParsedFile[i].find(':');
+		size_t dashIndex = ParsedFile[i].find('-');
+		size_t spaceIndex = ParsedFile[i].find_first_of(' ');
 
 		PasswordCheck passwordCheck;
 
-		passwordCheck.minCharLenght = std::stoi(ParsedFile[i].substr(0, dashIndex));
-		passwordCheck.maxCharLenght = std::stoi(ParsedFile[i].substr(dashIndex + 1, spaceIndex - (dashIndex + 1)));
+		passwordCheck.minCharLenght = (size_t)std::stoi(ParsedFile[i].substr(0, dashIndex));
+		passwordCheck.maxCharLenght = (size_t)std::stoi(ParsedFile[i].substr(dashIndex + 1, spaceIndex - (dashIndex + 1)));
 		passwordCheck.charRequirement = ParsedFile[i][spaceIndex + 1];
 
 		for (size_t j = splitIndex; j < ParsedFile[i].size(); j++)

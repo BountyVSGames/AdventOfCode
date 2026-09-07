@@ -74,12 +74,12 @@ bool DayFour::DoesPassportContainRequirements(std::string& passport)
 }
 bool DayFour::DoesPassportContainValidInformation(std::string& passport)
 {
-	int indx = 0;
+	size_t indx = 0;
 
 	while (indx != std::string::npos)
 	{
-		int divIndx = passport.find(':', indx + 1);
-		int nextIndx = passport.find(' ', divIndx);
+		size_t divIndx = passport.find(':', indx + 1);
+		size_t nextIndx = passport.find(' ', divIndx);
 
 		std::string keyword = passport.substr(indx, divIndx - indx);
 
