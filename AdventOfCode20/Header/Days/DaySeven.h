@@ -14,5 +14,8 @@ public:
 	void RunBonusAssignment();
 private:
 	std::map<std::string, std::vector<std::string>> bagRules;
+
+	void GetContainedBagFromRules(std::string bagName, std::string& bagsFound, int& count);
+	void GetCountContainedInBag(std::string bagName, int& count);
 };
 
