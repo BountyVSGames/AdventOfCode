@@ -51,9 +51,11 @@ void DaySeven::RunAssignment()
 void DaySeven::RunBonusAssignment()
 {
 	std::string bagToFind = "shiny gold";
-	int count = 0;
+	int bagCount = 0;
 
-	GetCountContainedInBag(bagToFind, count);
+	GetCountContainedInBag(bagToFind, bagCount);
+
+	std::cout << "A single " << bagToFind << " bug must contain " << bagCount << " other bags" << std::endl;
 }
 
 void DaySeven::GetContainedBagFromRules(std::string bagName, std::string& bagsFound, int& count)
@@ -64,8 +66,6 @@ void DaySeven::GetContainedBagFromRules(std::string bagName, std::string& bagsFo
 		{
 			if (it->second[j].substr(2) == bagName && bagsFound.find(it->first) == std::string::npos)
 			{
-				std::cout << it->first << std::endl;
-
 				bagsFound += it->first;
 				++count;
 				GetContainedBagFromRules(it->first, bagsFound, count);
@@ -73,37 +73,25 @@ void DaySeven::GetContainedBagFromRules(std::string bagName, std::string& bagsFo
 		}
 	}
 }
-void DaySeven::GetCountContainedInBag(std::string bagName, int& count)
+void DaySeven::GetCountContainedInBag(std::string bagName, int& bagCount)
 {
 	std::map<std::string, std::vector<std::string>>::iterator bagIt = bagRules.find(bagName);
 	int totalCount = 0;
 
-	if (bagIt == bagRules.end())
-	{
-		return;
-	}
-
-	count = 0;
-
 	for (size_t i = 0; i < bagIt->second.size(); i++)
 	{
-		count += std::stoi(bagIt->second[i].substr(0, 2));
-		
-		std::string bagName = bagIt->second[i].substr(2);
-		std::map<std::string, std::vector<std::string>>::iterator bagInBagIt = bagRules.find(bagName);
+		std::string updatedBagName = bagIt->second[i].substr(2);
+		std::map<std::string, std::vector<std::string>>::iterator bagInBagIt = bagRules.find(updatedBagName);
 
 		if (bagInBagIt != bagRules.end())
 		{
-			GetCountContainedInBag(bagName, count);
+			GetCountContainedInBag(updatedBagName, bagCount);
 
-			totalCount += (std::stoi(bagIt->second[i].substr(0, 2)) + (std::stoi(bagIt->second[i].substr(0, 2)) * count));
-
-			std::cout << std::stoi(bagIt->second[i].substr(0, 2)) << "+" << std::stoi(bagIt->second[i].substr(0, 2)) << "*" << count << std::endl;
-			std::cout << totalCount << std::endl;
+			bagCount = std::stoi(bagIt->second[i].substr(0, 2)) * (1 + bagCount);
 		}
-
-		
+		else
+		{
+			bagCount = std::stoi(bagIt->second[i].substr(0, 2));
+		}
 	}
-
-	
 }
