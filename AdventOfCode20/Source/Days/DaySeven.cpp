@@ -80,18 +80,26 @@ void DaySeven::GetCountContainedInBag(std::string bagName, int& bagCount)
 
 	for (size_t i = 0; i < bagIt->second.size(); i++)
 	{
-		std::string updatedBagName = bagIt->second[i].substr(2);
+		size_t splitIndex = bagIt->second[i].find(' ');
+		std::string updatedBagName = bagIt->second[i].substr(splitIndex + 1);
 		std::map<std::string, std::vector<std::string>>::iterator bagInBagIt = bagRules.find(updatedBagName);
+
+		int quantity = std::stoi(bagIt->second[i].substr(0, splitIndex));
+		int childBagCount = 0;
 
 		if (bagInBagIt != bagRules.end())
 		{
-			GetCountContainedInBag(updatedBagName, bagCount);
+			GetCountContainedInBag(updatedBagName, childBagCount);
 
-			bagCount = std::stoi(bagIt->second[i].substr(0, 2)) * (1 + bagCount);
+			childBagCount = quantity * (1 + childBagCount);
 		}
 		else
 		{
-			bagCount = std::stoi(bagIt->second[i].substr(0, 2));
+			childBagCount = quantity;
 		}
+		
+		totalCount += childBagCount;
 	}
+
+	bagCount = totalCount;
 }
